@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <title>{% block title %}{% endblock title %}</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="container-fluid text-center">
+          <h1>WELCOME TO MEZZANINE</h1>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <!--left panel-->
+          <div class="col-md-1 bg-secondary">
+            <a href="{% url 'Home_Page' %}"><button type="button" name="button" class="btn btn-outline-primary">Сайт</button></a>
+            <a href="{% url 'mezzanine' %}"><button type="button" name="button" class="btn btn-outline-info">HOME</button></a>
+            <a href="{% url 'mezzanine' %}"><button type="button" name="button" class="btn-outline-info">profile</button></a>
+            <a href="{% url 'mezzanine' %}"><button type="button" name="button" class="btn-outline-info">ADD</button></a>
+
+          </div>
+          <div class="col-md-4">
+            <!--ProjectTree panel-->
+            <p>Доступные вам проекты</p>
+            {% block ProjectTree %}
+
+            {% endblock ProjectTree %}
+          </div>
+          <!--content-->
+          <div class="col-md-7">
+            <p>Здесь будет описание документа или проекта</p>
+            {% block content %}
+
+            {% endblock content %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
