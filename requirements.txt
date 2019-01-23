@@ -1,0 +1,17 @@
+Django==2.1.4
+django-allauth==0.38.0
+django-summernote==0.8.11.4
+et-xmlfile==1.0.1
+Flask==1.0.2
+Flask-Cors==3.0.4
+html5lib==1.0.1
+Jinja2==2.10
+jsonschema==2.6.0
+lxml==4.2.1
+path.py==11.0.1
+pathlib2==2.3.2
+psycopg2==2.7.6.1
+requests==2.18.4
+requests-oauthlib==1.0.0
+urllib3==1.22
+

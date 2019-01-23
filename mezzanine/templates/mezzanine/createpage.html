@@ -1,0 +1,10 @@
+{% extends 'mezzanine/startpage.html' %}
+
+{% block title %}Новая страница{% endblock title %}
+{% block default %}
+  <form class="" action="{% url 'createpage' %}" enctype='multipart/form-data' method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="button" class="btn btn-success">ГОТОВО</button>
+  </form>
+{% endblock default %}

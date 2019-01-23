@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+
+      <!--Header-->
+      <div class="container-fluid">
+        <div class="row">
+          <!--For header img-->
+
+        </div>
+      </div>
+
+      <!--Navigation-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="btn-group col-md-10">
+            <a href="{% url 'Home_Page' %}"><p class="col-md-2 navbar-brand">DevRock</p></a>
+            <a href="{% url 'Home_Page' %}"><button type="button" class="btn btn-default" name="home">Главная</button></a>
+            {% if request.user.is_active %}
+              <a href="{% url 'mezzanine' %}"><button type="button" class="btn btn-default" name="home">mezzanine</button></a>
+            {% endif %}
+          </div>
+          <div class="btn-group col-md-2">
+            {% if request.user.is_staff %}
+              <a href="{% url 'account_logout' %}"><button type="button" class="btn btn-default" name="home">Выход</button></a>
+              <a href="profile"><button type="button" name="button" class="btn btn-info">{{ request.user }}</button></a>
+            {% else %}
+              <a href="{% url 'account_login' %}"><button type="button" class="btn btn-default" name="home">ВХОД</button></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <!--content-->
+        {% block content %}
+        {% endblock content %}
+      </div>
+
+      <div class="container-fluid">
+        <!--footer-->
+
+      </div>
+    </div>
+  </body>
+</html>
