@@ -3,7 +3,7 @@ from django import forms
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from django.core.exceptions import ValidationError
 
-from .models import Projects, ProjectPages
+from .models import *
 
 class CreateProjectForm(ModelForm):
     """Класс для создания проектов"""
@@ -17,12 +17,6 @@ class CreateProjectForm(ModelForm):
             'text': SummernoteWidget(),
         }
 
-    # def clean_title(self):
-    #     new_title = self.cleaned_data['title']
-    #
-    #     if Projects.objects.filter(title__iexact=new_title).count():
-    #         raise ValidationError('Проект с именем "{}" уже существует! Придумайте новое имя проекта...'.format(new_title))
-    #     return new_title
 
 
     def clean_slug(self):
@@ -34,25 +28,6 @@ class CreateProjectForm(ModelForm):
             raise ValidationError('Slug должен быть уникальным. Slug с именем "{}" уже существует!'.format(new_slug))
         return new_slug
 
-
-
-# class UpdateProjectForm(ModelForm):
-#     """Класс для редактирования проектов"""
-#     class Meta:
-#         model = Projects
-#         fields = ('mainimg','title', 'text')
-#
-#         widgets = {
-#             'title': forms.TextInput(attrs={'class': 'form-control'}),
-#             'text': SummernoteWidget(),
-#         }
-#
-#     def clean_title(self):
-#         new_title = self.cleaned_data['title']
-#
-#         if Projects.objects.filter(title__iexact=new_title).count():
-#             raise ValidationError('Проект с именем "{}" уже существует! Придумайте новое имя проекта...'.format(new_title))
-#         return new_title
 
 
 class CreatePageForm(ModelForm):
@@ -67,12 +42,6 @@ class CreatePageForm(ModelForm):
             'text': SummernoteWidget(),
         }
 
-    # def clean_title(self):
-    #     new_title = self.cleaned_data['title']
-    #
-    #     if ProjectPages.objects.filter(title__iexact=new_title).count():
-    #         raise ValidationError('Проект с именем "{}" уже существует! Придумайте новое имя проекта...'.format(new_title))
-    #     return new_title
 
 
     def clean_slug(self):
@@ -83,3 +52,19 @@ class CreatePageForm(ModelForm):
         if ProjectPages.objects.filter(slug__iexact=new_slug).count():
             raise ValidationError('Slug должен быть уникальным. Slug с именем "{}" уже существует!'.format(new_slug))
         return new_slug
+
+
+
+class Add_file_page(ModelForm):
+    """Класс формы для добавления файлов к страницам"""
+    class Meta:
+        model = PageFiles
+        fields = ('page', 'file')
+
+
+
+class Add_file_project(ModelForm):
+    """Класс формы для добавления файлов к проектам"""
+    class Meta:
+        model = ProjectFiles
+        fields = ('project', 'file')

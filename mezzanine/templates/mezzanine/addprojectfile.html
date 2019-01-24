@@ -1,0 +1,11 @@
+{% extends 'mezzanine/startpage.html' %}
+
+
+{% block title %}Добавление файла{% endblock title %}
+{% block default %}
+  <form class="text-center" action="{% url 'add_rojectfile' %}" enctype='multipart/form-data' method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="button" class="btn btn-success">ЗАГРУЗИТЬ</button>
+  </form>
+{% endblock default %}

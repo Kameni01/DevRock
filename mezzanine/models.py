@@ -79,7 +79,7 @@ class ProjectPages(models.Model):
 
 
 class ProjectFiles(models.Model):
-    """Класс файлов"""
+    """Класс файлов проекта"""
     user = models.ForeignKey(User, verbose_name='Загрузил', on_delete=models.CASCADE)
     project = models.ForeignKey(Projects, verbose_name='Проект', on_delete=models.CASCADE, null=True)
     title = models.CharField(verbose_name="Имя файла", null=True, max_length=100)
@@ -95,7 +95,7 @@ class ProjectFiles(models.Model):
 
 
 class PageFiles(models.Model):
-    """Класс файлов"""
+    """Класс файлов страницы"""
     user = models.ForeignKey(User, verbose_name='Загрузил', on_delete=models.CASCADE)
     page = models.ForeignKey(ProjectPages, verbose_name='Страница', on_delete=models.CASCADE, null=True)
     title = models.CharField(verbose_name="Имя файла", null=True, max_length=100)

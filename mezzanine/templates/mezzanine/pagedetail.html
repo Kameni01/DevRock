@@ -7,8 +7,8 @@
     Проект создал: <p>{{ detail.user }}</p>
     Дата создания: <p>{{ detail.created }}</p>
     {% if request.user == detail.user %}
-      <a href="{{ detail.get_update_url }}" class="btn btn-primary">ИЗМЕНИТЬ</a>
-      <a href="{{ detail.get_delete_url }}" class="btn btn-danger">УДАЛИТЬ</a>
+      <a href="{{ detail.get_update_url }}" class="btn btn-primary btn-sm">ИЗМЕНИТЬ</a>
+      <a href="{{ detail.get_delete_url }}" class="btn btn-danger btn-sm">УДАЛИТЬ</a>
     {% endif %}
     <p>{{ detail.text|safe }}</p>
 {% endblock default %}
@@ -16,11 +16,15 @@
 
 {% block file %}
   <p class="text-center">Прикрепленные файлы</p>
+  <div class="btn-group text-center">
+    <a href="{% url 'add_pagefile' %}" class="btn btn-success btn-sm">ПРИКРЕПИТЬ</a>
+  </div>
   <div class="btn-group-vertical">
     {% for file in files %}
         {% if file.projectpage_id == detail.id %}
           <p class="text-primary">{{ file.title }}</p>
-          <a download href="/media/{{ file.file }}"><button type="button" name="button" class="btn btn-outline-success btn-sm">download</button></a>
+          <a href="{% url 'delete_pagefile' pk=file.id %}" class="btn btn-outline-danger btn-sm">УДАЛИТЬ</a>
+          <a download href="/media/{{ file.file }}" class="btn btn-outline-success btn-sm">СКАЧАТЬ</a>
         {% endif %}
     {% endfor %}
   </div>

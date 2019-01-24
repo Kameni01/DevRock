@@ -68,3 +68,21 @@ class ObjectDeleteMixin:
         obj = self.model.objects.get(slug__iexact=slug)
         obj.delete()
         return redirect(reverse(self.redirect_url))
+
+
+
+class FileDeleteMixin:
+    model = None
+    template = None
+    redirect_url = None
+
+    def get(self, request, pk):
+        obj = self.model.objects.get(id=pk)
+        projects = Projects.objects.all()
+        pages = ProjectPages.objects.all()
+        return render(request, self.template, context={self.model.__name__.lower(): obj, 'projects': projects, "pages": pages})
+
+    def post(self, request, pk):
+        obj = self.model.objects.get(id=pk)
+        obj.delete()
+        return redirect(reverse(self.redirect_url))

@@ -8,19 +8,23 @@
     Проект создал: <p>{{ detail.user }}</p>
     Дата создания: <p>{{ detail.created }}</p>
     {% if request.user == detail.user %}
-      <a href="{{ detail.get_update_url }}"><button type="button" name="button" class="btn btn-primary">ИЗМЕНИТЬ</button></a>
-      <a href="{{ detail.get_delete_url }}" class="btn btn-danger">УДАЛИТЬ</a>
+      <a href="{{ detail.get_update_url }}" class="btn btn-primary btn-sm">ИЗМЕНИТЬ</a>
+      <a href="{{ detail.get_delete_url }}" class="btn btn-danger btn-sm">УДАЛИТЬ</a>
     {% endif %}
     <p>{{ detail.text|safe }}</p>
 {% endblock default %}
 
 {% block file %}
   <p class="text-center">Прикрепленные файлы</p>
-  <div class="btn-group-vertical">
+  <div class="btn-group text-center">
+    <a href="{% url 'add_rojectfile' %}" class="btn btn-success btn-sm text-center">ПРИКРЕПИТЬ</a>
+  </div>
+  <div class="btn-group-vertical text-center">
     {% for file in files %}
         {% if file.project_id == detail.id %}
           <p class="text-primary">{{ file.title }}</p>
-          <a download href="/media/{{ file.file }}"><button type="button" name="button" class="btn btn-outline-success btn-sm">download</button></a>
+          <a href="{% url 'delete_projectfile' pk=file.id %}" class="btn btn-outline-danger btn-sm">УДАЛИТЬ</a>
+          <a download href="/media/{{ file.file }}" class="btn btn-outline-success btn-sm">СКАЧАТЬ</a>
         {% endif %}
     {% endfor %}
   </div>

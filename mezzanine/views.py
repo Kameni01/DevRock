@@ -3,8 +3,8 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse
 from django.views.generic import View
 
-from .models import Projects, ProjectPages, ProjectFiles, PageFiles
-from .forms import CreateProjectForm, CreatePageForm
+from .models import *
+from .forms import *
 from .utils import *
 
 
@@ -66,6 +66,20 @@ class ProjectDelete(ObjectDeleteMixin, View):
 
 
 
+"""Класс добавления файлов к проектам"""
+class AddProjectFile(ObjectCreateMixin, View):
+    form_model = Add_file_project
+    template = 'mezzanine/addprojectfile.html'
+
+
+
+class DeletePageFile(FileDeleteMixin, View):
+    model = PageFiles
+    template = 'mezzanine/deleteprojectfile.html'
+    redirect_url = 'mezzanine'
+
+
+
 """Класс для создания страниц"""
 class CreatePage(ObjectCreateMixin, View):
     form_model = CreatePageForm
@@ -81,7 +95,22 @@ class update_page(ObjectUpdateMixin, View):
 
 
 
+"""Класс удаления страниц"""
 class PageDelete(ObjectDeleteMixin, View):
     model = ProjectPages
     template = 'mezzanine/deletepage.html'
+    redirect_url = 'mezzanine'
+
+
+
+"""Класс добавления файлов к проектам"""
+class AddPageFile(ObjectCreateMixin, View):
+    form_model = Add_file_page
+    template = 'mezzanine/addpagefile.html'
+
+
+
+class DeletePageFile(FileDeleteMixin, View):
+    model = PageFiles
+    template = 'mezzanine/deletepagefile.html'
     redirect_url = 'mezzanine'
