@@ -28,8 +28,11 @@ class Projects(models.Model):
     def get_absolute_url(self):
         return reverse('projectdetail', kwargs={'slug': self.slug})
 
-    def add_page_to_project(self):
+    def add_page_to_project(self, p_id):
         return reverse('createpage', kwarg={'p_id': self.id})
+
+    def exact_project_id(self, p_id):
+        return reverse('createpage', kwargs={'p_id': p_id})
 
     def get_update_url(self):
         return reverse('updateproject', kwargs={'slug': self.slug})
@@ -76,7 +79,7 @@ class ProjectPages(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = gen_slug(self.title)
-            self.project_id = self.p_id
+            #self.project_id = self.p_id
         super().save(*args, **kwargs)
 
 

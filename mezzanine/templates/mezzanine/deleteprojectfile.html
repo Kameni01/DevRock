@@ -4,8 +4,10 @@
 {% block default %}
   <form class="" action="{% url 'delete_projectfile' pk=projectfiles.id %}" enctype='multipart/form-data' method="post">
     {% csrf_token %}
-    <h3>Вы уверены что хотите удалить данный файл?</h3>
-    <a href="{% url 'mezzanine' %}" class="btn btn-danger">ОТМЕНА</a>
-    <button type="submit" name="button" class="btn btn-success">УДАЛИТЬ</button>
+    <h3 class="text-light text-center">Вы уверены что хотите удалить данный файл?</h3>
+    <div class="container text-center">
+      <a href="{% url 'mezzanine' %}" class="btn btn-danger">ОТМЕНА</a>
+      <button type="submit" name="button" class="btn btn-success">УДАЛИТЬ</button>
+    </div>
   </form>
 {% endblock default %}

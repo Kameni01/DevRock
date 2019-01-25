@@ -21,7 +21,7 @@
   </div>
   <div class="btn-group-vertical">
     {% for file in files %}
-        {% if file.projectpage_id == detail.id %}
+        {% if file.page_id == detail.id %}
           <p class="text-primary">{{ file.title }}</p>
           <a href="{% url 'delete_pagefile' pk=file.id %}" class="btn btn-outline-danger btn-sm">УДАЛИТЬ</a>
           <a download href="/media/{{ file.file }}" class="btn btn-outline-success btn-sm">СКАЧАТЬ</a>
