@@ -23,9 +23,13 @@ class Projects(models.Model):
     class Meta:
         verbose_name = "Проект"
         verbose_name_plural = "Проекты"
+        ordering = ["title"]
 
     def get_absolute_url(self):
         return reverse('projectdetail', kwargs={'slug': self.slug})
+
+    def add_page_to_project(self):
+        return reverse('createpage', kwarg={'p_id': self.id})
 
     def get_update_url(self):
         return reverse('updateproject', kwargs={'slug': self.slug})
@@ -48,6 +52,7 @@ class ProjectPages(models.Model):
     """Класс страниц проектов"""
     user = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
     project = models.ForeignKey(Projects, verbose_name='Проект', on_delete=models.CASCADE)
+    parent_page = models.IntegerField(verbose_name='Родительская страница', null=True, blank=True)
     title = models.CharField(verbose_name='Заголовок', max_length=100)
     text = models.TextField(verbose_name='Текст')
     created = models.DateTimeField("Дата создания", auto_now_add=True)
@@ -56,6 +61,7 @@ class ProjectPages(models.Model):
     class Meta:
         verbose_name = "Страница"
         verbose_name_plural = "Страницы"
+        ordering = ["title"]
 
 
     def get_absolute_url(self):
@@ -70,6 +76,7 @@ class ProjectPages(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = gen_slug(self.title)
+            self.project_id = self.p_id
         super().save(*args, **kwargs)
 
 

@@ -73,8 +73,8 @@ class AddProjectFile(ObjectCreateMixin, View):
 
 
 
-class DeletePageFile(FileDeleteMixin, View):
-    model = PageFiles
+class DeleteProjectFile(FileDeleteMixin, View):
+    model = ProjectFiles
     template = 'mezzanine/deleteprojectfile.html'
     redirect_url = 'mezzanine'
 

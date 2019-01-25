@@ -5,7 +5,7 @@
   <form class="" action="{% url 'delete_pagefile' pk=pagefiles.id %}" enctype='multipart/form-data' method="post">
     {% csrf_token %}
     <h3>Вы уверены что хотите удалить данный файл?</h3>
-    <a href="{% url 'pagedetail' pk=pagefiles.id %}" class="btn btn-danger">ОТМЕНА</a>
+    <a href="{% url 'mezzanine' %}" class="btn btn-danger">ОТМЕНА</a>
     <button type="submit" name="button" class="btn btn-success">УДАЛИТЬ</button>
   </form>
 {% endblock default %}

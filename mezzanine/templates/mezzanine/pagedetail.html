@@ -3,19 +3,19 @@
 
 {% block title %}{{ detail.title }}{% endblock title %}
 {% block default %}
-    <h2 class="text-center">{{ detail.title }}</h2>
-    Проект создал: <p>{{ detail.user }}</p>
-    Дата создания: <p>{{ detail.created }}</p>
+    <h2 class="text-center text-light">{{ detail.title }}</h2>
+    <p class="text-light">Проект создал: {{ detail.user }}</p>
+    <p class="text-light">Дата создания: {{ detail.created }}</p>
     {% if request.user == detail.user %}
       <a href="{{ detail.get_update_url }}" class="btn btn-primary btn-sm">ИЗМЕНИТЬ</a>
       <a href="{{ detail.get_delete_url }}" class="btn btn-danger btn-sm">УДАЛИТЬ</a>
     {% endif %}
-    <p>{{ detail.text|safe }}</p>
+    <p class="text-light">{{ detail.text|safe }}</p>
 {% endblock default %}
 
 
 {% block file %}
-  <p class="text-center">Прикрепленные файлы</p>
+  <p class="text-center text-light">ФАЙЛЫ</p>
   <div class="btn-group text-center">
     <a href="{% url 'add_pagefile' %}" class="btn btn-success btn-sm">ПРИКРЕПИТЬ</a>
   </div>
