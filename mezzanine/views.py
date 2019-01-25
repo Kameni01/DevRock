@@ -13,9 +13,9 @@ from .utils import *
 def TreeRender(request):
     projects = Projects.objects.all()
     pages = ProjectPages.objects.all()
+    sub_pages = ProjectPages.objects.all()
 
-
-    return render(request, 'mezzanine/default.html', {"projects": projects, "pages": pages})
+    return render(request, 'mezzanine/default.html', {"projects": projects, "pages": pages, 'sub_page': sub_pages})
 
 
 
@@ -24,10 +24,11 @@ def ProjectDetail(request, slug):
     projects = Projects.objects.all()
     pages = ProjectPages.objects.all()
     files = ProjectFiles.objects.all()
+    sub_pages = ProjectPages.objects.all()
     project = get_object_or_404(Projects, slug=slug)
 
 
-    return render(request, 'mezzanine/detailproject.html', {"projects": projects, "pages": pages, 'files': files, 'detail': project})
+    return render(request, 'mezzanine/detailproject.html', {"projects": projects, "pages": pages, 'files': files, 'detail': project, 'sub_page': sub_pages})
 
 
 
@@ -36,15 +37,16 @@ def PageDetail(request, slug):
     projects = Projects.objects.all()
     pages = ProjectPages.objects.all()
     files = PageFiles.objects.all()
+    sub_pages = ProjectPages.objects.all()
     page = get_object_or_404(ProjectPages, slug=slug)
 
 
-    return render(request, 'mezzanine/pagedetail.html', {"projects": projects, "pages": pages, 'files': files, 'detail': page})
+    return render(request, 'mezzanine/pagedetail.html', {"projects": projects, "pages": pages, 'files': files, 'detail': page, 'sub_page': sub_pages})
 
 
 
 """Класс для создания проектов"""
-class CreateProject(ObjectCreateMixin, View):
+class CreateProject(NonInheritedObjectCreateMixin, View):
     form_model = CreateProjectForm
     template = 'mezzanine/createproject.html'
 
@@ -67,9 +69,10 @@ class ProjectDelete(ObjectDeleteMixin, View):
 
 
 """Класс добавления файлов к проектам"""
-class AddProjectFile(ObjectCreateMixin, View):
+class AddProjectFile(InheritedObjectCreateMixin, View):
     form_model = Add_file_project
     template = 'mezzanine/addprojectfile.html'
+    what = 'proj_file'
 
 
 
@@ -81,9 +84,18 @@ class DeleteProjectFile(FileDeleteMixin, View):
 
 
 """Класс для создания страниц"""
-class CreatePage(ObjectCreateMixin, View):
+class CreatePage(InheritedObjectCreateMixin, View):
     form_model = CreatePageForm
     template = 'mezzanine/createpage.html'
+    what = 'proj'
+
+
+
+"""Класс для создания страниц"""
+class CreatePageToPage(InheritedObjectCreateMixin, View):
+    form_model = CreatePageForm
+    template = 'mezzanine/createpagetopage.html'
+    what = 'page'
 
 
 
@@ -104,9 +116,10 @@ class PageDelete(ObjectDeleteMixin, View):
 
 
 """Класс добавления файлов к проектам"""
-class AddPageFile(ObjectCreateMixin, View):
+class AddPageFile(InheritedObjectCreateMixin, View):
     form_model = Add_file_page
     template = 'mezzanine/addpagefile.html'
+    what = 'page_file'
 
 
 

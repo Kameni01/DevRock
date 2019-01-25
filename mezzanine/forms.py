@@ -13,7 +13,6 @@ class CreateProjectForm(ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'slug': forms.TextInput(attrs={'class': 'form-control'}),
             'text': SummernoteWidget(),
         }
 
@@ -34,11 +33,10 @@ class CreatePageForm(ModelForm):
     """Класс для создания страниц проектов"""
     class Meta:
         model = ProjectPages
-        fields = ('project','title', 'text')
+        fields = ('title', 'text')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'slug': forms.TextInput(attrs={'class': 'form-control'}),
             'text': SummernoteWidget(),
         }
 
@@ -59,7 +57,7 @@ class Add_file_page(ModelForm):
     """Класс формы для добавления файлов к страницам"""
     class Meta:
         model = PageFiles
-        fields = ('page', 'file')
+        fields = ('title', 'file')
 
 
 
@@ -67,4 +65,4 @@ class Add_file_project(ModelForm):
     """Класс формы для добавления файлов к проектам"""
     class Meta:
         model = ProjectFiles
-        fields = ('project', 'file')
+        fields = ('title', 'file')

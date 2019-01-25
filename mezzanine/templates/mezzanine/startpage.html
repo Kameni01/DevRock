@@ -9,23 +9,37 @@
       <div class="btn-group">
         <a href="{{ project.get_delete_url }}" class="btn text-danger btn-sm">X</a>
         <a href="{{ project.get_update_url }}" class="btn text-primary btn-sm">C</a>
-        <a href="" class="btn text-success btn-sm">P</a>
+        <a href="{% url 'createpage' slug=project.slug %}" class="btn text-success btn-sm">P</a>
       </div>
     </div>
   </div>
     {% for page in pages %}
-      {% if page.project_id == project.id %}
+      {% if page.project_id == project.id and page.parent_page == Null %}
       <div class="container">
         <div class="btn-group">
-          <a href="{% url 'pagedetail' slug=page.slug %}" class="btn btn-sm"><p class="text-warning">---{{ page.title }}</p></a>
+          <a href="{% url 'pagedetail' slug=page.slug %}" class="btn btn-sm"><p class="text-warning">{{ page.title }}</p></a>
           <div class="btn-group">
             <a href="{{ page.get_delete_url }}" class="btn text-danger btn-sm">x</a>
             <a href="{{ page.get_update_url }}" class="btn text-primary btn-sm">и</a>
-            <a href="" class="btn text-success btn-sm">PtP</a>
+            <a href="{% url 'pagetopage' slug=page.slug %}" class="btn text-success btn-sm">PtP</a>
           </div>
         </div>
       </div>
       {% endif %}
+      {% for sub in sub_page %}
+        {% if sub.project_id == project.id and page.id == sub.parent_page %}
+        <div class="container">
+          <div class="btn-group">
+            <a href="{% url 'pagedetail' slug=sub.slug %}" class="btn btn-sm"><p class="text-danger">^{{ sub.title }}</p></a>
+            <div class="btn-group">
+              <a href="{{ sub.get_delete_url }}" class="btn text-danger btn-sm">x</a>
+              <a href="{{ sub.get_update_url }}" class="btn text-primary btn-sm">и</a>
+              <a href="{% url 'pagetopage' slug=sub.slug %}" class="btn text-success btn-sm">PtP</a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
     {% endfor %}
     <hr>
   {% endfor %}
