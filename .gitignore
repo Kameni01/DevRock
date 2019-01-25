@@ -2,4 +2,7 @@ venv
 .idea
 mysite
 *.bmp
-
+*.jpg
+*.docx
+*.doc
+*.pyc
