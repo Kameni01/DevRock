@@ -19,6 +19,7 @@ class Projects(models.Model):
     text = models.TextField(verbose_name='Текст')
     created = models.DateTimeField('Дата создания', auto_now_add=True)
     slug = models.SlugField(verbose_name='slug', blank=True, max_length=150, unique=True)
+    ended = models.BooleanField(verbose_name='Готовность', blank=True, null=True, default=False)
 
     class Meta:
         verbose_name = "Проект"
@@ -28,11 +29,7 @@ class Projects(models.Model):
     def get_absolute_url(self):
         return reverse('projectdetail', kwargs={'slug': self.slug})
 
-    def add_page_to_project(self, p_id):
-        return reverse('createpage', kwarg={'p_id': self.id})
 
-    def exact_project_id(self, p_id):
-        return reverse('createpage', kwargs={'p_id': p_id})
 
     def get_update_url(self):
         return reverse('updateproject', kwargs={'slug': self.slug})
@@ -43,6 +40,8 @@ class Projects(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = gen_slug(self.title)
+        if self.created:
+            pass
         super().save(*args, **kwargs)
 
 
@@ -54,7 +53,7 @@ class Projects(models.Model):
 class ProjectPages(models.Model):
     """Класс страниц проектов"""
     user = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
-    project = models.ForeignKey(Projects, verbose_name='Проект', on_delete=models.CASCADE)
+    project = models.ForeignKey(Projects, verbose_name='Проект', null=True, blank=True, on_delete=models.CASCADE)
     parent_page = models.IntegerField(verbose_name='Родительская страница', null=True, blank=True)
     title = models.CharField(verbose_name='Заголовок', max_length=100)
     text = models.TextField(verbose_name='Текст')
@@ -79,7 +78,8 @@ class ProjectPages(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = gen_slug(self.title)
-            #self.project_id = self.p_id
+        if self.created:
+            pass
         super().save(*args, **kwargs)
 
 
@@ -92,7 +92,7 @@ class ProjectFiles(models.Model):
     """Класс файлов проекта"""
     user = models.ForeignKey(User, verbose_name='Загрузил', on_delete=models.CASCADE)
     project = models.ForeignKey(Projects, verbose_name='Проект', on_delete=models.CASCADE, null=True)
-    title = models.CharField(verbose_name="Имя файла", null=True, max_length=100)
+    title = models.CharField(verbose_name="Имя файла", blank=True, null=True, max_length=100)
     file = models.FileField(upload_to='files/', verbose_name='Файл', null=True)
 
     class Meta:
@@ -108,7 +108,7 @@ class PageFiles(models.Model):
     """Класс файлов страницы"""
     user = models.ForeignKey(User, verbose_name='Загрузил', on_delete=models.CASCADE)
     page = models.ForeignKey(ProjectPages, verbose_name='Страница', on_delete=models.CASCADE, null=True)
-    title = models.CharField(verbose_name="Имя файла", null=True, max_length=100)
+    title = models.CharField(verbose_name="Имя файла", blank=True, null=True, max_length=100)
     file = models.FileField(upload_to='files/', verbose_name='Файл', null=True)
 
     class Meta:
