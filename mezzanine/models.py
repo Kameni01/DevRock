@@ -19,6 +19,7 @@ class Projects(models.Model):
     text = models.TextField(verbose_name='Текст')
     created = models.DateTimeField('Дата создания', auto_now_add=True)
     slug = models.SlugField(verbose_name='slug', blank=True, max_length=150, unique=True)
+    ended = models.BooleanField(verbose_name='Готовность', blank=True, null=True, default=False)
 
     class Meta:
         verbose_name = "Проект"
