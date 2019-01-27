@@ -16,7 +16,7 @@ class Projects(models.Model):
     user = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
     mainimg = models.ImageField(upload_to='mezzanine/MainImg', height_field=None, width_field=None, max_length=100, blank=True, null=True)
     title = models.CharField(verbose_name='Заголовок', max_length=100)
-    text = models.TextField(verbose_name='Текст')
+    text = models.TextField(verbose_name='Текст', null=True, blank=True)
     created = models.DateTimeField('Дата создания', auto_now_add=True)
     slug = models.SlugField(verbose_name='slug', blank=True, max_length=150, unique=True)
     ended = models.BooleanField(verbose_name='Готовность', blank=True, null=True, default=False)
@@ -56,7 +56,7 @@ class ProjectPages(models.Model):
     project = models.ForeignKey(Projects, verbose_name='Проект', null=True, blank=True, on_delete=models.CASCADE)
     parent_page = models.IntegerField(verbose_name='Родительская страница', null=True, blank=True)
     title = models.CharField(verbose_name='Заголовок', max_length=100)
-    text = models.TextField(verbose_name='Текст')
+    text = models.TextField(verbose_name='Текст', null=True, blank=True)
     created = models.DateTimeField("Дата создания", auto_now_add=True)
     slug = models.SlugField(verbose_name='slug' , blank=True, max_length=150, unique=True)
 
