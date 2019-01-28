@@ -3,6 +3,8 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse
 from django.views.generic import View
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .models import *
 from .forms import *
 from .utils import *
@@ -46,84 +48,85 @@ def PageDetail(request, slug):
 
 
 """Класс для создания проектов"""
-class CreateProject(NonInheritedObjectCreateMixin, View):
+class CreateProject(LoginRequiredMixin, NonInheritedObjectCreateMixin, View):
     form_model = CreateProjectForm
     template = 'mezzanine/createproject.html'
-
+    raise_exception = True
 
 
 """Класс для изменения проектов"""
-class update_project(ObjectUpdateMixin, View):
+class update_project(LoginRequiredMixin, ObjectUpdateMixin, View):
     model = Projects
     form_model = CreateProjectForm
     template = 'mezzanine/updateproject.html'
-
+    raise_exception = True
 
 
 """Класс удаления проектов"""
-class ProjectDelete(ObjectDeleteMixin, View):
+class ProjectDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
     model = Projects
     template = 'mezzanine/deleteproject.html'
     redirect_url = 'mezzanine'
-
+    raise_exception = True
 
 
 """Класс добавления файлов к проектам"""
-class AddProjectFile(InheritedObjectCreateMixin, View):
+class AddProjectFile(LoginRequiredMixin, InheritedObjectCreateMixin, View):
     form_model = Add_file_project
     template = 'mezzanine/addprojectfile.html'
     what = 'proj_file'
+    raise_exception = True
 
 
-
-class DeleteProjectFile(FileDeleteMixin, View):
+class DeleteProjectFile(LoginRequiredMixin, FileDeleteMixin, View):
     model = ProjectFiles
     template = 'mezzanine/deleteprojectfile.html'
     redirect_url = 'mezzanine'
-
+    raise_exception = True
 
 
 """Класс для создания страниц"""
-class CreatePage(InheritedObjectCreateMixin, View):
+class CreatePage(LoginRequiredMixin, InheritedObjectCreateMixin, View):
     form_model = CreatePageForm
     template = 'mezzanine/createpage.html'
     what = 'proj'
-
+    raise_exception = True
 
 
 """Класс для создания страниц"""
-class CreatePageToPage(InheritedObjectCreateMixin, View):
+class CreatePageToPage(LoginRequiredMixin, InheritedObjectCreateMixin, View):
     form_model = CreatePageForm
     template = 'mezzanine/createpagetopage.html'
     what = 'page'
-
+    raise_exception = True
 
 
 """Класс для изменения страниц"""
-class update_page(ObjectUpdateMixin, View):
+class update_page(LoginRequiredMixin, ObjectUpdateMixin, View):
     model = ProjectPages
     form_model = CreatePageForm
     template = 'mezzanine/updatepage.html'
-
+    raise_exception = True
 
 
 """Класс удаления страниц"""
-class PageDelete(ObjectDeleteMixin, View):
+class PageDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
     model = ProjectPages
     template = 'mezzanine/deletepage.html'
     redirect_url = 'mezzanine'
-
+    raise_exception = True
 
 
 """Класс добавления файлов к проектам"""
-class AddPageFile(InheritedObjectCreateMixin, View):
+class AddPageFile(LoginRequiredMixin, InheritedObjectCreateMixin, View):
     form_model = Add_file_page
     template = 'mezzanine/addpagefile.html'
     what = 'page_file'
+    raise_exception = True
 
 
-
-class DeletePageFile(FileDeleteMixin, View):
+class DeletePageFile(LoginRequiredMixin, FileDeleteMixin, View):
     model = PageFiles
     template = 'mezzanine/deletepagefile.html'
     redirect_url = 'mezzanine'
+    raise_exception = True
