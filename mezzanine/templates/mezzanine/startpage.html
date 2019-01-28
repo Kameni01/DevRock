@@ -19,8 +19,10 @@
         <div class="btn-group">
           <a href="{% url 'pagedetail' slug=page.slug %}" class="btn btn-sm"><p class="text-warning">^{{ page.title }}</p></a>
           <div class="btn-group">
-            <a href="{{ page.get_delete_url }}" class="btn text-danger btn-sm">x</a>
-            <a href="{{ page.get_update_url }}" class="btn text-primary btn-sm">и</a>
+            {% if page.user == request.user %}
+              <a href="{{ page.get_delete_url }}" class="btn text-danger btn-sm">x</a>
+              <a href="{{ page.get_update_url }}" class="btn text-primary btn-sm">и</a>
+            {% endif %}
             <a href="{% url 'pagetopage' slug=page.slug %}" class="btn text-success btn-sm">PtP</a>
           </div>
         </div>
@@ -32,8 +34,10 @@
           <div class="btn-group">
             <a href="{% url 'pagedetail' slug=sub.slug %}" class="btn btn-sm"><p class="text-danger">^^{{ sub.title }}</p></a>
             <div class="btn-group">
-              <a href="{{ sub.get_delete_url }}" class="btn text-danger btn-sm">x</a>
-              <a href="{{ sub.get_update_url }}" class="btn text-primary btn-sm">и</a>
+              {% if page.user == request.user %}
+                <a href="{{ sub.get_delete_url }}" class="btn text-danger btn-sm">x</a>
+                <a href="{{ sub.get_update_url }}" class="btn text-primary btn-sm">и</a>
+              {% endif %}
               <a href="{% url 'pagetopage' slug=sub.slug %}" class="btn text-success btn-sm">PtP</a>
             </div>
           </div>
