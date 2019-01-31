@@ -11,39 +11,40 @@ from .utils import *
 
 
 
-"""Функция вывода древа проектов на стартовой странице"""
-def TreeRender(request):
-    projects = Projects.objects.all()
-    pages = ProjectPages.objects.all()
-    sub_pages = ProjectPages.objects.all()
+"""Класс вывода древа проектов на стартовой странице"""
+class TreeRender(LoginRequiredMixin, View):
+    def get(self, request):
+        projects = Projects.objects.all()
+        pages = ProjectPages.objects.all()
+        sub_pages = ProjectPages.objects.all()
 
-    return render(request, 'mezzanine/default.html', {"projects": projects, "pages": pages, 'sub_page': sub_pages})
-
-
-
-"""Функция вывода подробной информации по странице проекта"""
-def ProjectDetail(request, slug):
-    projects = Projects.objects.all()
-    pages = ProjectPages.objects.all()
-    files = ProjectFiles.objects.all()
-    sub_pages = ProjectPages.objects.all()
-    project = get_object_or_404(Projects, slug=slug)
-
-
-    return render(request, 'mezzanine/detailproject.html', {"projects": projects, "pages": pages, 'files': files, 'detail': project, 'sub_page': sub_pages})
+        return render(request, 'mezzanine/default.html', {"projects": projects, "pages": pages, 'sub_page': sub_pages})
 
 
 
-"""Функция вывода подробной информации по странице проекта"""
-def PageDetail(request, slug):
-    projects = Projects.objects.all()
-    pages = ProjectPages.objects.all()
-    files = PageFiles.objects.all()
-    sub_pages = ProjectPages.objects.all()
-    page = get_object_or_404(ProjectPages, slug=slug)
+"""Класс вывода подробной информации по странице проекта"""
+class ProjectDetail(LoginRequiredMixin, View):
+    def get(self, request, slug):
+        projects = Projects.objects.all()
+        pages = ProjectPages.objects.all()
+        files = ProjectFiles.objects.all()
+        sub_pages = ProjectPages.objects.all()
+        project = get_object_or_404(Projects, slug=slug)
+
+        return render(request, 'mezzanine/detailproject.html', {"projects": projects, "pages": pages, 'files': files, 'detail': project, 'sub_page': sub_pages})
 
 
-    return render(request, 'mezzanine/pagedetail.html', {"projects": projects, "pages": pages, 'files': files, 'detail': page, 'sub_page': sub_pages})
+
+"""Класс вывода подробной информации по странице проекта"""
+class PageDetail(LoginRequiredMixin, View):
+    def get(self, request, slug):
+        projects = Projects.objects.all()
+        pages = ProjectPages.objects.all()
+        files = PageFiles.objects.all()
+        sub_pages = ProjectPages.objects.all()
+        page = ProjectPages.objects.get(slug__iexact=slug)
+
+        return render(request, 'mezzanine/pagedetail.html', {"projects": projects, "pages": pages, 'files': files, 'detail': page, 'sub_page': sub_pages})
 
 
 

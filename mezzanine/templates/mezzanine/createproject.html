@@ -5,7 +5,13 @@
 {% block default %}
   <form class="" action="{% url 'createproject' %}" enctype='multipart/form-data' method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    <p class="text-light">Главное изображение: {{ form.mainimg }}</p>
+    <p class="text-light">Заголовок:</p>
+    {{ form.title }}
+    <p class="">Текст проекта:</p>
+    {{ form.text }}
+    <p class="text-light">Готовность: {{ form.ended }}</p>
+    <!-- {{ form.as_p }} -->
     <button type="submit" name="button" class="btn btn-success">ГОТОВО</button>
   </form>
 {% endblock default %}

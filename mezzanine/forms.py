@@ -9,11 +9,12 @@ class CreateProjectForm(ModelForm):
     """Класс для создания проектов"""
     class Meta:
         model = Projects
-        fields = ('mainimg','title', 'text')
+        fields = ('mainimg','title', 'text', 'ended')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'text': SummernoteWidget(),
+            'ended': forms.CheckboxInput(attrs={'class': ''}),
         }
 
 
