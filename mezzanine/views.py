@@ -11,8 +11,8 @@ from .utils import *
 
 
 
-"""Класс вывода древа проектов на стартовой странице"""
 class TreeRender(LoginRequiredMixin, View):
+    """Класс вывода древа проектов на стартовой странице"""
     def get(self, request):
         projects = Projects.objects.all()
         pages = ProjectPages.objects.all()
@@ -22,8 +22,8 @@ class TreeRender(LoginRequiredMixin, View):
 
 
 
-"""Класс вывода подробной информации по странице проекта"""
 class ProjectDetail(LoginRequiredMixin, View):
+    """Класс вывода подробной информации по странице проекта"""
     def get(self, request, slug):
         projects = Projects.objects.all()
         pages = ProjectPages.objects.all()
@@ -35,8 +35,8 @@ class ProjectDetail(LoginRequiredMixin, View):
 
 
 
-"""Класс вывода подробной информации по странице проекта"""
 class PageDetail(LoginRequiredMixin, View):
+    """Класс вывода подробной информации по странице проекта"""
     def get(self, request, slug):
         projects = Projects.objects.all()
         pages = ProjectPages.objects.all()
@@ -48,85 +48,97 @@ class PageDetail(LoginRequiredMixin, View):
 
 
 
-"""Класс для создания проектов"""
 class CreateProject(LoginRequiredMixin, NonInheritedObjectCreateMixin, View):
+    """Класс для создания проектов"""
     form_model = CreateProjectForm
     template = 'mezzanine/createproject.html'
     raise_exception = True
 
 
-"""Класс для изменения проектов"""
+
 class UpdateProject(LoginRequiredMixin, ObjectUpdateMixin, View):
+    """Класс для изменения проектов"""
     model = Projects
     form_model = CreateProjectForm
     template = 'mezzanine/updateproject.html'
     raise_exception = True
 
 
-"""Класс удаления проектов"""
+
 class ProjectDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
+    """Класс удаления проектов"""
     model = Projects
     template = 'mezzanine/deleteproject.html'
     redirect_url = 'mezzanine'
     raise_exception = True
 
 
-"""Класс добавления файлов к проектам"""
+
 class AddProjectFile(LoginRequiredMixin, InheritedObjectCreateMixin, View):
+    """Класс добавления файлов к проектам"""
     form_model = Add_file_project
     template = 'mezzanine/addprojectfile.html'
     what = 'proj_file'
     raise_exception = True
 
 
+
 class DeleteProjectFile(LoginRequiredMixin, FileDeleteMixin, View):
+    """Класс удаления файлов из проектов"""
     model = ProjectFiles
     template = 'mezzanine/deleteprojectfile.html'
     redirect_url = 'mezzanine'
     raise_exception = True
 
 
-"""Класс для создания страниц"""
+
 class CreatePage(LoginRequiredMixin, InheritedObjectCreateMixin, View):
+    """Класс для создания страниц"""
     form_model = CreatePageForm
     template = 'mezzanine/createpage.html'
     what = 'proj'
     raise_exception = True
 
 
-"""Класс для создания страниц"""
+
 class CreatePageToPage(LoginRequiredMixin, InheritedObjectCreateMixin, View):
+    """Класс для создания страниц"""
     form_model = CreatePageForm
     template = 'mezzanine/createpagetopage.html'
     what = 'page'
     raise_exception = True
 
 
-"""Класс для изменения страниц"""
+
 class UpdatePage(LoginRequiredMixin, ObjectUpdateMixin, View):
+    """Класс для изменения страниц"""
     model = ProjectPages
     form_model = CreatePageForm
     template = 'mezzanine/updatepage.html'
     raise_exception = True
 
 
-"""Класс удаления страниц"""
+
 class PageDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
+    """Класс удаления страниц"""
     model = ProjectPages
     template = 'mezzanine/deletepage.html'
     redirect_url = 'mezzanine'
     raise_exception = True
 
 
-"""Класс добавления файлов к проектам"""
+
 class AddPageFile(LoginRequiredMixin, InheritedObjectCreateMixin, View):
+    """Класс добавления файлов к страницам"""
     form_model = Add_file_page
     template = 'mezzanine/addpagefile.html'
     what = 'page_file'
     raise_exception = True
 
 
+
 class DeletePageFile(LoginRequiredMixin, FileDeleteMixin, View):
+    """Класс для удаления файлов со страниц"""
     model = PageFiles
     template = 'mezzanine/deletepagefile.html'
     redirect_url = 'mezzanine'
