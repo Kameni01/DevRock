@@ -56,7 +56,7 @@ class CreateProject(LoginRequiredMixin, NonInheritedObjectCreateMixin, View):
 
 
 """Класс для изменения проектов"""
-class update_project(LoginRequiredMixin, ObjectUpdateMixin, View):
+class UpdateProject(LoginRequiredMixin, ObjectUpdateMixin, View):
     model = Projects
     form_model = CreateProjectForm
     template = 'mezzanine/updateproject.html'
@@ -103,7 +103,7 @@ class CreatePageToPage(LoginRequiredMixin, InheritedObjectCreateMixin, View):
 
 
 """Класс для изменения страниц"""
-class update_page(LoginRequiredMixin, ObjectUpdateMixin, View):
+class UpdatePage(LoginRequiredMixin, ObjectUpdateMixin, View):
     model = ProjectPages
     form_model = CreatePageForm
     template = 'mezzanine/updatepage.html'
