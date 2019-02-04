@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 
 def Tree():
+    """Функция для создания переменных хранящих данные
+    для построения древа проектов(Была инкапсулированна
+    для уменьшения объема кода)"""
     projects = Projects.objects.all()
     pages = ProjectPages.objects.all()
     sub_pages = ProjectPages.objects.all()
