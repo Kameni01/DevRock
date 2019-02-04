@@ -17,7 +17,7 @@ class Projects(models.Model):
     mainimg = models.ImageField(upload_to='mezzanine/MainImg', height_field=None, width_field=None, max_length=100, blank=True, null=True)
     title = models.CharField(verbose_name='Заголовок', max_length=100)
     text = models.TextField(verbose_name='Текст', null=True, blank=True)
-    created = models.DateTimeField('Дата создания', auto_now_add=True)
+    created = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
     slug = models.SlugField(verbose_name='slug', blank=True, max_length=150, unique=True)
     ended = models.BooleanField(verbose_name='Готовность', blank=True, null=True)
 
@@ -57,6 +57,7 @@ class ProjectPages(models.Model):
     text = models.TextField(verbose_name='Текст', null=True, blank=True)
     created = models.DateTimeField("Дата создания", auto_now_add=True)
     slug = models.SlugField(verbose_name='slug' , blank=True, max_length=150, unique=True)
+    # level = models.IntegerField(verbose_name='Уровень наследования', null=True, blank=True)
 
     class Meta:
         verbose_name = "Страница"
