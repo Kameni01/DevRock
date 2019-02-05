@@ -25,7 +25,7 @@ SECRET_KEY = 't*ukj50(y-qyj&f$ap2+$qk@*#)z=17(glm)v6b^++=2^k0+4b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['maksimvrs.ru']
+# ALLOWED_HOSTS = ['maksimvrs.ru']
 
 
 # Application definition
@@ -38,14 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'django_summernote',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
     'startdir',
     'mezzanine',
+    'taskmanager',
 ]
 
 MIDDLEWARE = [

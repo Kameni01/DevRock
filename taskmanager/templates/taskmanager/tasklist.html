@@ -1,68 +1,33 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '/css/style.css' %}">
-    <title>Task list</title>
-</head>
-<body>
-<!--Header-->
-      <div class="container-fluid">
-        <div class="row">
-          <!--For header img-->
+{% extends 'mezzanine.html' %}
 
-        </div>
-      </div>
 
-      <!--Navigation-->
-      <div class="container-fluid">
-        <div class="row">
-          <div class="btn-group col-md-10">
-            <a href="{% url 'Home_Page' %}"><p class="col-md-2 navbar-brand">DevRock</p></a>
-            {% if request.user.is_active %}
-              <a href="{% url 'mezzanine' %}"><button type="button" class="btn btn-default" name="home">mezzanine</button></a>
-            {% endif %}
+{% block content %}
+  <h1 style="margin-left: 60px;" class="text-light">Tasks: <a href="{% url 'create_task_url' %}"><button type="button" class="btn btn-primary" name="home">Create new</button></a></h1>
+      {% for task in tasks %}
+          <div class="card" style="width: 18rem; margin-left: 40px;">
+              <div class="card-body">
+                  {% if task.project != task.DEFAULT_PROJECT %}
+                  <h6 class="card-subtitle mb-2 text-muted">{{ task.project }}</h6>
+                  {% endif %}
+                  <h5 class="card-title">{{ task.title|title }}</h5>
+                  {% if task.status == task.TODO %}
+                      <div style="color: orange; font-weight: bold;">To do</div>
+                  {% elif task.status == task.DONE %}
+                      <div style="color: limegreen; font-weight: bold;">Done</div>
+                  {% elif task.status == task.INPROGRESS %}
+                      <div style="color: dodgerblue; font-weight: bold;">In progress</div>
+                  {% elif task.status == task.REVIEW %}
+                      <div style="color: maroon; font-weight: bold;">On review</div>
+                  {% endif %}
+                  <p class="card-text">{{ task.body }}</p>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                  {% if task.creator != None %}
+                  <a href="#" class="card-subtitle mb-2 text-muted">{{ task.creator }}</a>,
+                  {% endif %}
+                  {{ task.creation_date }}</h6>
+                  <!-- <h6 class="card-subtitle mb-2 text-muted">DL: {{ task.deadline_date }}</h6> -->
+                  <a href="{% url 'delete_task_url' id=task.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Delete</button></a> <a href="{% url 'edit_task_url' id=task.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Edit</button></a>
+              </div>
           </div>
-          <div class="btn-group col-md-2">
-            {% if request.user.is_staff %}
-              <a href="{% url 'account_logout' %}"><button type="button" class="btn btn-default" name="home">Выход</button></a>
-              <a href="profile"><button type="button" name="button" class="btn btn-info">{{ request.user }}</button></a>
-            {% else %}
-              <a href="{% url 'account_login' %}"><button type="button" class="btn btn-default" name="home">ВХОД</button></a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-
-<h1 style="margin-left: 60px;">Tasks: <a href="{% url 'create_task_url' %}"><button type="button" class="btn btn-primary" name="home">Create new</button></a></h1>
-    {% for task in tasks %}
-        <div class="card" style="width: 18rem; margin-left: 40px;">
-            <div class="card-body">
-                {% if task.project != task.DEFAULT_PROJECT %}
-                <h6 class="card-subtitle mb-2 text-muted">{{ task.project }}</h6>
-                {% endif %}
-                <h5 class="card-title">{{ task.title|title }}</h5>
-                {% if task.status == task.TODO %}
-                    <div style="color: orange; font-weight: bold;">To do</div>
-                {% elif task.status == task.DONE %}
-                    <div style="color: limegreen; font-weight: bold;">Done</div>
-                {% elif task.status == task.INPROGRESS %}
-                    <div style="color: dodgerblue; font-weight: bold;">In progress</div>
-                {% elif task.status == task.REVIEW %}
-                    <div style="color: maroon; font-weight: bold;">On review</div>
-                {% endif %}
-                <p class="card-text">{{ task.body }}</p>
-                <h6 class="card-subtitle mb-2 text-muted">
-                {% if task.creator != None %}
-                <a href="#" class="card-subtitle mb-2 text-muted">{{ task.creator }}</a>,
-                {% endif %}
-                {{ task.creation_date }}</h6>
-                <!-- <h6 class="card-subtitle mb-2 text-muted">DL: {{ task.deadline_date }}</h6> -->
-                <a href="{% url 'delete_task_url' id=task.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Delete</button></a> <a href="{% url 'edit_task_url' id=task.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Edit</button></a>
-            </div>
-        </div>
-    {% endfor %}
-</body>
-</html>
+      {% endfor %}
+{% endblock content %}

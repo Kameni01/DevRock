@@ -5,14 +5,18 @@ from django.http import HttpResponse
 from .models import Task
 from .forms import *
 
-# Create your views here.
-def show_task(request):
-    tasks = Task.objects.all()
-    print(request.user)
-    return render(request, 'taskmanager/tasklist.html', context={"tasks":tasks, "user": request.user})
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class TaskCreate(View):
+
+class ShowTask(LoginRequiredMixin, View):
+    def get(self, request):
+        tasks = Task.objects.all()
+        print(request.user)
+        return render(request, 'taskmanager/tasklist.html', context={"tasks":tasks, "user": request.user})
+
+
+class TaskCreate(LoginRequiredMixin, View):
     def get(self, request):
         form = TaskForm()
         return render(request, 'taskmanager/create_task.html', context={"form":form})
@@ -28,7 +32,7 @@ class TaskCreate(View):
         return redirect(reverse('taskmanager_url'))
 
 
-class TaskDelete(View):
+class TaskDelete(LoginRequiredMixin, View):
     def get(self, request, id):
         task = Task.objects.get(id=id)
         task.delete()
@@ -36,7 +40,7 @@ class TaskDelete(View):
         return redirect(reverse('taskmanager_url'))
 
 
-class TaskEdit(View):
+class TaskEdit(LoginRequiredMixin, View):
     def get(self, request, id):
         task = Task.objects.get(id=id)
         form = TaskForm(instance=task)

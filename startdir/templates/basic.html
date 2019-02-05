@@ -24,8 +24,9 @@
           <div class="btn-group col-md-10">
             <a href="{% url 'Home_Page' %}"><p class="col-md-2 navbar-brand">DevRock</p></a>
             <a href="{% url 'Home_Page' %}"><button type="button" class="btn btn-default" name="home">Главная</button></a>
-            {% if request.user.is_active %}
+            {% if request.user.is_active and request.user.is_staff %}
               <a href="{% url 'mezzanine' %}"><button type="button" class="btn btn-default" name="home">mezzanine</button></a>
+              <a href="{% url 'taskmanager_url' %}"><button type="button" class="btn btn-default" name="home">tasks</button></a>
             {% endif %}
           </div>
           <div class="btn-group col-md-2">

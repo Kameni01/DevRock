@@ -22,5 +22,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('startdir.urls')),
     path('mezzanine/', include('mezzanine.urls')),
-    path('taskmanager/', include('taskmanager.urls'))
+    path('taskmanager/', include('taskmanager.urls')),
 ]

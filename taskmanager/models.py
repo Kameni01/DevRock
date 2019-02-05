@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from mezzanine.models import Projects
 from .utils import get_all_projects_enumerated
 
-# Create your models here.
+
 
 
 class Task(models.Model):
@@ -30,4 +30,5 @@ class Task(models.Model):
     # reviewer = profile
     # comments
 
-
+    def __str__(self):
+        return self.title

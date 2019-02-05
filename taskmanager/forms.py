@@ -25,12 +25,12 @@ class TaskForm(ModelForm):
             'body': forms.TextInput(attrs={'class': 'form-control', 'size': 80}),
         }
 
-    def save(self):
-        new_task = Task.objects.create(
-            title=self.cleaned_data["title"],
-            body=self.cleaned_data["body"],
-            status=self.cleaned_data["status"],
-            project=self.cleaned_data["project"]
-        )
+    # def save(self):
+    #     new_task = Task.objects.create(
+    #         title=self.cleaned_data["title"],
+    #         body=self.cleaned_data["body"],
+    #         status=self.cleaned_data["status"],
+    #         project=self.cleaned_data["project"]
+    #     )
 
-        return new_task
+        # return new_task
