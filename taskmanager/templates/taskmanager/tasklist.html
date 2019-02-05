@@ -14,15 +14,15 @@
                       <div style="color: orange; font-weight: bold;">To do</div>
                   {% elif task.status == task.DONE %}
                       <div style="color: limegreen; font-weight: bold;">Done</div>
-                  {% elif task.status == task.INPROGRESS %}
+                  {% elif task.status == task.IN_PROGRESS %}
                       <div style="color: dodgerblue; font-weight: bold;">In progress</div>
                   {% elif task.status == task.REVIEW %}
                       <div style="color: maroon; font-weight: bold;">On review</div>
                   {% endif %}
                   <p class="card-text">{{ task.body }}</p>
                   <h6 class="card-subtitle mb-2 text-muted">
-                  {% if task.creator != None %}
-                  <a href="#" class="card-subtitle mb-2 text-muted">{{ task.creator }}</a>,
+                  {% if task.author != None %}
+                  <a href="#" class="card-subtitle mb-2 text-muted">{{ task.author }}</a>,
                   {% endif %}
                   {{ task.creation_date }}</h6>
                   <!-- <h6 class="card-subtitle mb-2 text-muted">DL: {{ task.deadline_date }}</h6> -->
