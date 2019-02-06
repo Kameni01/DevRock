@@ -12,8 +12,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class ShowTask(LoginRequiredMixin, View):
     def get(self, request):
         tasks = Task.objects.all()
+        comments = TaskComment.objects.all()
         print(request.user)
-        return render(request, 'taskmanager/tasklist.html', context={"tasks":tasks, "user": request.user})
+        return render(request, 'taskmanager/tasklist.html', context={"tasks":tasks, "user": request.user, 'comments': comments})
 
 
 class TaskCreate(LoginRequiredMixin, View):
@@ -26,7 +27,7 @@ class TaskCreate(LoginRequiredMixin, View):
 
         if form.is_valid():
             task = form.save()
-            task.creator = request.user
+            task.author = request.user
             task.save()
 
         return redirect(reverse('taskmanager_url'))
@@ -53,5 +54,27 @@ class TaskEdit(LoginRequiredMixin, View):
 
         if form.is_valid():
             task.save()
+
+        return redirect(reverse('taskmanager_url'))
+
+
+class CommentAdd(LoginRequiredMixin, View):
+    def get(self, request, id):
+        tasks = Task.objects.all()
+        comments = TaskComment.objects.all()
+        form = CommentForm()
+        return render(request, 'taskmanager/tasklist.html', context={"tasks":tasks, "comment_form":form, "current_form": id, "comments": comments})
+
+    def post(self, request, id):
+        form = CommentForm(request.POST)
+
+        if form.is_valid():
+            # comment = form.save()
+            comment = TaskComment()
+            comment.author = request.user
+            comment.task = Task.objects.get(id=id)
+            comment.body = form.cleaned_data["body"]
+
+            comment.save()
 
         return redirect(reverse('taskmanager_url'))

@@ -7,30 +7,21 @@ from .models import *
 
 
 class TaskForm(ModelForm):
-    # title = forms.CharField(max_length=160)
-    # body = forms.CharField(max_length=160)  # SummernoteWidget()
-
-
-    # status = forms.ChoiceField(widget=forms.RadioSelect, choices=statuses)
-
-    # title.widget.attrs.update({"class":"form-control"})
-    # body.widget.attrs.update({"rows":"3", "class":"form-control"})
-
     class Meta:
         model = Task
         fields = ['title', 'body', 'status', 'project']
 
         widgets = {
-            'title' : forms.TextInput(attrs={'class': 'form-control', 'size': 80}),
-            'body': forms.TextInput(attrs={'class': 'form-control', 'size': 80}),
+            'title' : forms.TextInput(attrs={'class': 'form-control'}),
+            'body': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-    # def save(self):
-    #     new_task = Task.objects.create(
-    #         title=self.cleaned_data["title"],
-    #         body=self.cleaned_data["body"],
-    #         status=self.cleaned_data["status"],
-    #         project=self.cleaned_data["project"]
-    #     )
 
-        # return new_task
+class CommentForm(ModelForm):
+    class Meta:
+        model = TaskComment
+        fields = ['body']
+
+        widgets = {
+            'body': forms.TextInput(attrs={'class': 'form-control'}),
+        }
