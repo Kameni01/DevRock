@@ -1,47 +1,36 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 <html lang="ru" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
     <title>{% block title %}{% endblock title %}</title>
-  </head>
-<style>
-  p { color: #191919 }
-</style>
-  <body >
-    <div class="container-fluid">
-      <div class="container-fluid text-center">
-          <h1 class="text-light">WELCOME TO MEZZANINE</h1>
-      </div>
-      <div class="container-fluid">
-        <a class="row">
-          <!--left panel-->
-        <div id="panel" style="position: absolute; width: 80px; height: 940px;left: 0px; top: 0px; background: #000000"></div>
-        <div id="logo" style="position: absolute; width: 45px; height: 66px;left: 23px; top: 19px; font-family: Consolas; font-style: normal; font-weight: bold; font-height: normal; font-size: 36px; color: #FFFFFF">dr</div>
-        <a href="{% url 'Home_Page' %}" id="home-icon" style="position: absolute; width: 45px; height: 66px;left: 23px; top: 111px; font-family: Consolas; font-style: normal; font-weight: bold; font-height: normal; font-size: 36px; color: #FFFFFF">hm</a>
-        <a href="{% url 'mezzanine' %}" id="mezzanine-icon" style="position: absolute; width: 45px; height: 66px;left: 23px; top: 203px; font-family: Consolas; font-style: normal; font-weight: bold; font-height: normal; font-size: 36px; color: #FFFFFF">pr</a>
-        <a href="{% url 'taskmanager_url' %}" id="taskmanager-icon" style="position: absolute; width: 45px; height: 66px;left: 23px; top: 295px; font-family: Consolas; font-style: normal; font-weight: bold; font-height: normal; font-size: 36px; color: #FFFFFF">tm</a>
-        <div id="side-panel" style="position: absolute; width: 384px; height: 940px;left: 80px; top: 0px; background: #F5F5F5"></div>
-          <div class="col-3" style="left: 100px;">
-            <!--ProjectTree panel-->
-            {% block ProjectTree %}
-
-            {% endblock ProjectTree %}
-          </div>
-          <!--content-->
-          <div class="col-5">
-            {% block content %}
-
-            {% endblock content %}
-          </div>
-          <div class="col-2 text-center">
-            {% block file %}
-
-            {% endblock file %}
-          </div>
-        </div>
-      </div>
-  </body>
+</head>
+<body >
+<div class="container-fluid">
+    <!--left panel-->
+    <div id="panel" style="position: absolute; width: 80px; height: 1080px;left: 0px; top: 0px; background: #000000"></div>
+    <div id="logo" style="position: absolute; width: 45px; height: 66px;left: 23px; top: 19px; font-family: Consolas; font-style: normal; font-weight: bold; font-height: normal; font-size: 36px; color: #FFFFFF">dr</div>
+    <a href="{% url 'Home_Page' %}" id="home-icon" style="position: absolute; width: 45px; height: 66px;left: 23px; top: 111px; font-family: Consolas; font-style: normal; font-weight: bold; font-height: normal; font-size: 36px; color: #FFFFFF">hm</a>
+    <a href="{% url 'mezzanine' %}" id="mezzanine-icon" style="position: absolute; width: 45px; height: 66px;left: 23px; top: 203px; font-family: Consolas; font-style: normal; font-weight: bold; font-height: normal; font-size: 36px; color: #FFFFFF">pr</a>
+    <a href="{% url 'taskmanager_url' %}" id="taskmanager-icon" style="position: absolute; width: 45px; height: 66px;left: 23px; top: 295px; font-family: Consolas; font-style: normal; font-weight: bold; font-height: normal; font-size: 36px; color: #FFFFFF">tm</a>
+    <div id="side-panel" style="position: absolute; width: 384px; height: 940px;left: 80px; top: 0px; background: #F5F5F5"></div>
+    <!--ProjectTree panel-->
+    <div class="col-3" style="left: 100px;">
+        {% block ProjectTree %}
+        {% endblock ProjectTree %}
+    </div>
+    <!--content-->
+    <div class="col-5">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <!-- ??? -->
+    <div class="col-2 text-center">
+        {% block file %}
+        {% endblock file %}
+    </div>
+</div>
+</body>
 </html>

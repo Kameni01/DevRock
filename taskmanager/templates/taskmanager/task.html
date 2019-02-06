@@ -1,34 +1,36 @@
 {% extends 'taskmanager/tasklist.html' %}
 
 {% block context %}
-    <div style="position: absolute; left: 500px;">
-    <h1>{{ cur_task.title|title }}</h1>
-    <p>{{ cur_task.body }}</p>
-    <a href="{% url 'delete_task_url' id=cur_task.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Delete</button></a> <a href="{% url 'edit_task_url' id=cur_task.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Edit</button></a>
+    <div style="position: absolute; margin-left: 500px; margin-top: -30px; width: 800px">
+        <h1>{{ cur_task.title|title }}</h1>
+        <h6>{{ cur_task.body }}</h6>
+        <a href="{% url 'delete_task_url' id=cur_task.id %}"><button type="button" class="btn btn-outline-danger btn-sm">Удалить</button></a> <a href="{% url 'edit_task_url' id=cur_task.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Редактировать</button></a>
 
-    <h3>Comments:</h3>
-    <ul>
-    {% for comment in comments %}
-        <li>
-        <div>
-        <h5 class="card-text">{{ comment.body }}</h5>
-        <a href="#" class="card-subtitle mb-2 text-muted" style="position: relative; top: -10px;">{{ comment.author }}</a>
-        </div>
-        </li>
-    {% endfor %}
-    </ul>
+        <h3 style="margin-top: 20px;">Комметарии:</h3>
+        {% for comment in comments %}
+            <div style="position: relative; left: 40px; width: 600px;">
+                <table>
+                    <tr>
+                        <td valign="top">
+                            <h2 style="padding-right: 10px">U</h2></td>
+                        <td>
+                            <h6 class="card-text">{{ comment.body }}</h6>
+                            <a href="#" class="card-subtitle mb-2 text-muted" style="position: relative; top: -10px;">{{ comment.author }}</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        {% endfor %}
 
-    <form action="{% url 'add_comment_url' id=cur_task.id %}" method="post">
-      {% csrf_token %}
-      {% for field in form %}
-              <div class="form-group">
-              Leave a comment:
-              {{ field }}
-              </div>
-      {% endfor %}
-      <button type="submit" class="btn btn-outline-primary btn-sm">Comment</button>
-    </form>
+        <form action="{% url 'add_comment_url' id=cur_task.id %}" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    Оставьте комментарий
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-outline-primary btn-sm">Отправить</button>
+        </form>
     </div>
-
-
 {% endblock context %}

@@ -11,9 +11,18 @@ class TaskForm(ModelForm):
         model = Task
         fields = ['title', 'body', 'status', 'project']
 
+        labels = {
+            'title': 'Название',
+            'body': 'Описание',
+            'status': 'Статус',
+            'project': 'Проект'
+        }
+
         widgets = {
             'title' : forms.TextInput(attrs={'class': 'form-control'}),
-            'body': forms.TextInput(attrs={'class': 'form-control'}),
+            'body': forms.Textarea(attrs={'class': 'form-control', 'rows': '6'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
+            'project': forms.Select(attrs={'class': 'form-control'})
         }
 
 
@@ -23,5 +32,5 @@ class CommentForm(ModelForm):
         fields = ['body']
 
         widgets = {
-            'body': forms.TextInput(attrs={'class': 'form-control'}),
+            'body': forms.Textarea(attrs={'class': 'form-control', 'rows': '3'}),
         }

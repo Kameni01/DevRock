@@ -8,8 +8,8 @@ class Task(models.Model):
     IN_PROGRESS = 1
     REVIEW = 2
     DONE = 3
-    STATUSES = ((TODO, 'ToDo',), (IN_PROGRESS, 'InProgress',),
-                    (REVIEW, 'Review',), (DONE, 'Done',))
+    STATUSES = ((TODO, 'To do',), (IN_PROGRESS, 'In progress',),
+                    (REVIEW, 'On review',), (DONE, 'Done',))
 
     title = models.CharField(max_length=160, db_index=True)
     body = models.TextField(blank=True)

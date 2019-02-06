@@ -2,33 +2,37 @@
 
 
 {% block content %}
-    <div style="margin-left: 60px;" class="text-light"><a href="{% url 'create_task_url' %}"><button type="button" class="btn btn-primary" name="home">Create new</button></a></div>
+    <h2 style="margin-left: 70px; margin-top: 16px;">Задачи: <a href="{% url 'create_task_url' %}"><button type="button" class="btn btn-primary" name="home">Добавить</button></a></h2>
     <div style="position: absolute; left: 66px;">
         {% for task in tasks %}
-            <div>
+            <div style="margin-left: 16px;">
                 <table width="350" style="height: 10px;">
                     <tr>
                         <td width="70%">
                             <a href="{% url "task_url" id=task.id %}"><p class="card-title">{{ task.title|title }}</p></a>
                         </td>
                         <td width="30%">
-                            {% if task.status == task.TODO %}
-                                <p style="color: #ffb02e; float: right; font-weight: bold;">To do</p>
-                            {% elif task.status == task.DONE %}
-                                <p style="color: limegreen; float: right; font-weight: bold;">Done</p>
-                            {% elif task.status == task.IN_PROGRESS %}
-                                <p style="color: dodgerblue;  float: right; font-weight: bold;">In progress</p>
-                            {% elif task.status == task.REVIEW %}
-                                <p style="color: #ff2c7a; float: right; font-weight: bold;">On review</p>
-                            {% endif %}
+                            <div class="card-title" style="font-weight: bold; float: right;">
+                                {% if task.status == task.TODO %}
+                                    To do
+                                {% elif task.status == task.DONE %}
+                                    Done
+                                {% elif task.status == task.IN_PROGRESS %}
+                                    In progress
+                                {% elif task.status == task.REVIEW %}
+                                    On review
+                                {% endif %}
+                            </div>
                         </td>
                     </tr>
                 </table>
-            <h6 class="card-subtitle mb-2 text-muted" style="position: relative; top: -10px;">{{ task.creation_date }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted" style="position: relative; top: -10px;">{{ task.creation_date }}</h6>
             </div>
         {% endfor %}
     </div>
-    {% block context %}
+    <div style="position: absolute">
+        {% block context %}
 
-    {% endblock %}
+        {% endblock %}
+    </div>
 {% endblock %}
