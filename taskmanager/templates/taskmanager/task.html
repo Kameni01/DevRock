@@ -2,7 +2,7 @@
 
 {% block context %}
     <div style="position: absolute; left: 500px;">
-    <h3>{{ cur_task.title|title }}</h3>
+    <h1>{{ cur_task.title|title }}</h1>
     <p>{{ cur_task.body }}</p>
     <a href="{% url 'delete_task_url' id=cur_task.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Delete</button></a> <a href="{% url 'edit_task_url' id=cur_task.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Edit</button></a>
 

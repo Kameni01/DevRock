@@ -13,13 +13,13 @@
                         </td>
                         <td width="30%">
                             {% if task.status == task.TODO %}
-                                <p style="color: #ff9900; float: right; font-weight: bold;">To do</p>
+                                <p style="color: #ffb02e; float: right; font-weight: bold;">To do</p>
                             {% elif task.status == task.DONE %}
                                 <p style="color: limegreen; float: right; font-weight: bold;">Done</p>
                             {% elif task.status == task.IN_PROGRESS %}
                                 <p style="color: dodgerblue;  float: right; font-weight: bold;">In progress</p>
                             {% elif task.status == task.REVIEW %}
-                                <p style="color: #cc0000; float: right; font-weight: bold;">On review</p>
+                                <p style="color: #ff2c7a; float: right; font-weight: bold;">On review</p>
                             {% endif %}
                         </td>
                     </tr>
