@@ -2,53 +2,33 @@
 
 
 {% block content %}
-    <h1 style="margin-left: 60px;" class="text-light">Tasks: <a href="{% url 'create_task_url' %}"><button type="button" class="btn btn-primary" name="home">Create new</button></a></h1>
-    {% for task in tasks %}
-        <div class="card" style="width: 18rem; margin-left: 40px;">
-            <div class="card-body">
-                {% if task.project != task.DEFAULT_PROJECT %}
-                    <h6 class="card-subtitle mb-2 text-muted">{{ task.project }}</h6>
-                {% endif %}
-                <h5 class="card-title">{{ task.title|title }}</h5>
-                {% if task.status == task.TODO %}
-                    <div style="color: orange; font-weight: bold;">To do</div>
-                {% elif task.status == task.DONE %}
-                    <div style="color: limegreen; font-weight: bold;">Done</div>
-                {% elif task.status == task.IN_PROGRESS %}
-                    <div style="color: dodgerblue; font-weight: bold;">In progress</div>
-                {% elif task.status == task.REVIEW %}
-                    <div style="color: maroon; font-weight: bold;">On review</div>
-                {% endif %}
-                <p class="card-text">{{ task.body }}</p>
-                <h6 class="card-subtitle mb-2 text-muted">
-                    {% if task.author != None %}
-                        <a href="#" class="card-subtitle mb-2 text-muted">{{ task.author }}</a>,
-                    {% endif %}
-                    {{ task.creation_date }}</h6>
-                <!-- <h6 class="card-subtitle mb-2 text-muted">DL: {{ task.deadline_date }}</h6> -->
-                <a href="{% url 'delete_task_url' id=task.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Delete</button></a> <a href="{% url 'edit_task_url' id=task.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Edit</button></a> <a href="{% url 'add_comment_url' id=task.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Comment</button></a>
+    <div style="margin-left: 60px;" class="text-light"><a href="{% url 'create_task_url' %}"><button type="button" class="btn btn-primary" name="home">Create new</button></a></div>
+    <div style="position: absolute; left: 66px;">
+        {% for task in tasks %}
+            <div>
+                <table width="350" style="height: 10px;">
+                    <tr>
+                        <td width="70%">
+                            <a href="{% url "task_url" id=task.id %}"><p class="card-title">{{ task.title|title }}</p></a>
+                        </td>
+                        <td width="30%">
+                            {% if task.status == task.TODO %}
+                                <p style="color: #ff9900; float: right; font-weight: bold;">To do</p>
+                            {% elif task.status == task.DONE %}
+                                <p style="color: limegreen; float: right; font-weight: bold;">Done</p>
+                            {% elif task.status == task.IN_PROGRESS %}
+                                <p style="color: dodgerblue;  float: right; font-weight: bold;">In progress</p>
+                            {% elif task.status == task.REVIEW %}
+                                <p style="color: #cc0000; float: right; font-weight: bold;">On review</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
+            <h6 class="card-subtitle mb-2 text-muted" style="position: relative; top: -10px;">{{ task.creation_date }}</h6>
             </div>
-        </div>
-        {% for comment in comments %}
-            {% if comment.task == task %}
-                <div class="card" style="width: 18rem; margin-left: 40px;">
-                    <p class="card-text">{{ comment.body }}</p>
-                    <a href="#" class="card-subtitle mb-2 text-muted">{{ comment.author }}</a>
-            </div>
-            {% endif %}
-            {% endfor %}
-        {% if comment_form != none and current_form == task.id %}
-            <div class="card" style="width: 18rem; margin-left: 40px;">
-                <form action="{% url 'add_comment_url' id=task.id %}" method="post">
-                    {% csrf_token %}
-                    {% for field in comment_form %}
-                        <div class="form-group">
-                            {{ field }}
-                        </div>
-                    {% endfor %}
-                    <button type="submit" class="btn btn-primary">Comment</button>
-                </form>
-            </div>
-        {% endif %}
-    {% endfor %}
-{% endblock content %}
+        {% endfor %}
+    </div>
+    {% block context %}
+
+    {% endblock %}
+{% endblock %}

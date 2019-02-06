@@ -9,18 +9,27 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
-class ShowTask(LoginRequiredMixin, View):
+class ShowTasks(LoginRequiredMixin, View):
     def get(self, request):
         tasks = Task.objects.all()
         comments = TaskComment.objects.all()
-        print(request.user)
         return render(request, 'taskmanager/tasklist.html', context={"tasks":tasks, "user": request.user, 'comments': comments})
+
+
+class ShowTask(LoginRequiredMixin, View):
+    def get(self, request, id):
+        task = Task.objects.get(id=id)
+        tasks = Task.objects.all()
+        comments = TaskComment.objects.filter(task=task)
+        form = CommentForm()
+        return render(request, 'taskmanager/task.html', context={"tasks":tasks, "form": form, 'comments': comments, "cur_task": task})
 
 
 class TaskCreate(LoginRequiredMixin, View):
     def get(self, request):
+        tasks = Task.objects.all()
         form = TaskForm()
-        return render(request, 'taskmanager/create_task.html', context={"form":form})
+        return render(request, 'taskmanager/create_task.html', context={"form":form, "tasks": tasks})
 
     def post(self, request):
         form = TaskForm(request.POST)
@@ -77,4 +86,4 @@ class CommentAdd(LoginRequiredMixin, View):
 
             comment.save()
 
-        return redirect(reverse('taskmanager_url'))
+        return redirect(reverse('task_url', kwargs={"id": id}))

@@ -1,7 +1,7 @@
-{% extends 'mezzanine.html' %}
+{% extends 'taskmanager/tasklist.html' %}
 
-{% block content %}
-  <form action="{% url 'edit_task_url' id=task.id %}" method="post">
+{% block context %}
+  <form action="{% url 'edit_task_url' id=task.id %}" method="post" style="position: absolute; left: 460px; top: 40px;">
       {% csrf_token %}
       {% for field in form %}
               <div class="form-group">
@@ -11,4 +11,4 @@
       {% endfor %}
       <button type="submit" class="btn btn-primary">Done</button>
   </form>
-{% endblock content %}
+{% endblock context %}
