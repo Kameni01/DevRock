@@ -2,7 +2,7 @@
 
 {% block title %}{{ projects.title }}{% endblock title %}
 {% block default %}
-  <form class="" action="{{ projects.get_delete_url }}" enctype='multipart/form-data' method="post">
+  <form class="text-center" action="{{ projects.get_delete_url }}" enctype='multipart/form-data' method="post">
     {% csrf_token %}
     <h3>Вы уверены что хотите удалить данный проект?</h3>
     <a href="{{ projects.get_absolute_url }}" class="btn btn-danger">ОТМЕНА</a>

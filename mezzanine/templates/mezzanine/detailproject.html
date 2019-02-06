@@ -6,25 +6,25 @@
 {% if detail.mainimg %}
     <img src="/media/{{ detail.mainimg }}" alt="" class="img-thumbnail">
 {% endif %}
-    <h2 class="text-center text-light">{{ detail.title }}</h2>
-    <p class="text-light">Проект создал: {{ detail.user }}</p>
-    <p class="text-light">Дата создания: {{ detail.created }}</p>
+    <h2 class="text-center">{{ detail.title }}</h2>
+    <p class="">Проект создал: {{ detail.user }}</p>
+    <p class="">Дата создания: {{ detail.created }}</p>
     {% if request.user == detail.user %}
       <a href="{{ detail.get_update_url }}" class="btn btn-primary btn-sm">ИЗМЕНИТЬ</a>
       <a href="{{ detail.get_delete_url }}" class="btn btn-danger btn-sm">УДАЛИТЬ</a>
     {% endif %}
-    <p class="text-light">{{ detail.text|safe }}</p>
+    <p class="">{{ detail.text|safe }}</p>
 {% endblock default %}
 
 {% block file %}
-  <p class="text-center text-light">Прикрепленные файлы</p>
+  <p class="text-center">Прикрепленные файлы</p>
   <div class="btn-group-vertical text-center">
     <a href="{% url 'add_rojectfile' slug=detail.slug %}" class="btn btn-success btn-sm text-center">ПРИКРЕПИТЬ</a>
   </div>
   <div class="btn-group-vertical text-center">
     {% for file in files %}
         {% if file.project_id == detail.id %}
-          <p class="text-primary text-center text-light">{{ file.title }}</p>
+          <p class="text-primary text-center">{{ file.title }}</p>
           <a href="{% url 'delete_projectfile' pk=file.id %}" class="btn btn-outline-danger btn-sm">УДАЛИТЬ</a>
           <a download href="/media/{{ file.file }}" class="btn btn-outline-success btn-sm">СКАЧАТЬ</a>
         {% endif %}
