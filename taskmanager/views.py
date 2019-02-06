@@ -53,9 +53,10 @@ class TaskDelete(LoginRequiredMixin, View):
 class TaskEdit(LoginRequiredMixin, View):
     def get(self, request, id):
         task = Task.objects.get(id=id)
+        tasks = Task.objects.all()
         form = TaskForm(instance=task)
 
-        return render(request, 'taskmanager/edit_task.html', context={"form":form, "task": task})
+        return render(request, 'taskmanager/edit_task.html', context={"form":form, "task": task, "tasks":tasks})
 
     def post(self, request, id):
         task = Task.objects.get(id=id)
