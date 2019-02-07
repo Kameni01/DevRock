@@ -12,9 +12,9 @@
 <div class="container-fluid">
     <!--left panel-->
     <div id="panel" style="position: absolute; width: 80px; height: 1080px;left: 0px; top: 0px; background: #000000"></div>
-    <div id="logo" style="position: absolute; width: 45px; height: 66px;left: 23px; top: 19px; font-family: Palanquin; font-style: normal; font-weight: bold; line-height: normal; font-size: 36px; color: #FFFFFF">dr</div>
-    <a href="{% url 'Home_Page' %}"><img src="{% static '/mezzanine/icons/home_icon.png' %}" id="home-icon" style="position: absolute; left: 1.46%; right: 97.26%; top: 12.98%; bottom: 84.66%;"></a>
-    <a href="{% url 'mezzanine' %}" id="mezzanine-icon"><img src="{% static '/mezzanine/icons/documents_icon.png' %}" id="home-icon" style="position: absolute; left: 1.51%; right: 97.38%; top: 21.17%; bottom: 75.99%;"></a>
+    <a href="{% url 'Home_Page' %}"><div id="logo" style="position: absolute; width: 45px; height: 66px;left: 23px; top: 19px; font-family: Palanquin; font-style: normal; font-weight: bold; line-height: normal; font-size: 36px; color: #FFFFFF">dr</div></a>
+    <a href="{% url 'mezzanine' %}"><img src="{% static '/mezzanine/icons/home_icon.png' %}" id="home-icon" style="position: absolute; left: 1.46%; right: 97.26%; top: 12.98%; bottom: 84.66%;"></a>
+    <img src="{% static '/mezzanine/icons/documents_icon.png' %}" id="home-icon" style="position: absolute; left: 1.51%; right: 97.38%; top: 21.17%; bottom: 75.99%;">
     <a href="{% url 'taskmanager_url' %}"><img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}" id="taskmanager-icon" style="position: absolute; left: 1.46%; right: 97.29%; top: 29.04%; bottom: 68.12%;"></a>
     <div id="side-panel" style="position: absolute; width: 384px; height: 940px;left: 80px; top: 0px; background: #F5F5F5"></div>
     <!--ProjectTree panel-->
