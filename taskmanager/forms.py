@@ -9,20 +9,22 @@ from .models import *
 class TaskForm(ModelForm):
     class Meta:
         model = Task
-        fields = ['title', 'body', 'status', 'project']
+        fields = ['title', 'body', 'status', 'project', 'deadline_date']
 
         labels = {
             'title': 'Название',
             'body': 'Описание',
             'status': 'Статус',
-            'project': 'Проект'
+            'project': 'Проект',
+            'deadline_date': 'Дедлайн'
         }
 
         widgets = {
             'title' : forms.TextInput(attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control', 'rows': '6'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
-            'project': forms.Select(attrs={'class': 'form-control'})
+            'project': forms.Select(attrs={'class': 'form-control'}),
+            'deadline_date': forms.DateTimeInput()
         }
 
 

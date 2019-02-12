@@ -1,8 +1,8 @@
 {% extends 'taskmanager/tasklist.html' %}
 
 {% block context %}
-  <form action="{% url 'create_task_url' %}" method="post" style="position: absolute; margin-left: 500px; margin-top: -30px; width: 800px">
-  <h2>Новая задача</h2>
+  <form action="{% url 'create_task_url' proj_id=cur_project.id %}" method="post" style="position: absolute; margin-left: 500px; margin-top: 60px; width: 800px">
+      <h2>Новая задача</h2>
       {% csrf_token %}
       {% for field in form %}
               <div class="form-group">

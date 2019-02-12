@@ -1,0 +1,10 @@
+{% extends 'mezzanine/project.html' %}
+{% load staticfiles %}
+{% block context %}
+    <div style="position: absolute; width: 259px; height: 22px;left: 509px; top: 46px; font-family: Museo Sans Cyrl; line-height: normal; font-size: 18px; color: #737373;">
+    {{ cur_project.title }} / О проекте
+    </div>
+    <div style="position: absolute; width: 178px; height: 44px; left: 533px; top: 113px; font-family: Museo Sans Cyrl; line-height: normal; font-size: 36px;">
+    {{ cur_project.text|safe }}
+    </div>
+{% endblock %}

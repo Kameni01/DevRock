@@ -3,7 +3,7 @@
 
 {% block title %}Новый проект{% endblock title %}
 {% block default %}
-  <form class="" action="{% url 'createproject' %}" enctype='multipart/form-data' method="post">
+  <form class="" action="{% url 'createproject' %}" enctype='multipart/form-data' method="post" style="position: absolute; width: 170px; height: 18px; left: 500px; top: 47px;">
     {% csrf_token %}
     <p class="">Главное изображение: {{ form.mainimg }}</p>
     <p class="">Заголовок:</p>

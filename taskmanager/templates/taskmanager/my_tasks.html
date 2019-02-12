@@ -1,0 +1,45 @@
+{% extends 'taskmanager/tasklist.html' %}
+{% load staticfiles %}
+{% block context %}
+    <div style="position: absolute; width: 259px; height: 22px;left: 509px; top: 46px; font-family: Museo Sans Cyrl; line-height: normal; font-size: 18px; color: #737373;">
+    {{ cur_project.title }} / Мои задачи
+    </div>
+    <div style="position: absolute; width: 196px; height: 44px; left: 533px; top: 117px; font-family: Museo Sans Cyrl; line-height: normal; font-size: 36px; color: #191919;">
+        Мои задачи
+    </div>
+    <a href="{% url 'create_task_url' proj_id=cur_project.id %}">
+    <img src="{% static 'mezzanine/icons/plus_icon.png' %}" style="position: absolute; left: 1470px; top: 205px;">
+    <div style="position: absolute; width: 206px; height: 18px; left: 1515px; top: 205px; font-family: Gotham Pro; line-height: normal; font-size: 18px; color: #9E9E9E;">
+    Создать новую задачу
+    </div>
+    </a>
+    <div style="position: absolute; width: 1190.01px; height: 0px; left: 533px; top: 333px; border: 1px solid #9E9E9E;"></div>
+    <div style="position: absolute; width: 99px; height: 20px; left: 533px; top: 302px; font-weight: bold; font-family: Gotham Pro; line-height: normal; font-size: 20px; color: #191919;">
+    Название
+    </div>
+    <div style="position: absolute; width: 112px; height: 20px; left: 1140px; top: 302px; font-weight: bold; font-family: Gotham Pro; line-height: normal; font-size: 20px; color: #191919;">
+    Состояние
+    </div>
+    <div style="position: absolute; width: 90px; height: 20px; left: 1409px; top: 302px;; font-weight: bold; font-family: Gotham Pro; line-height: normal; font-size: 20px; color: #191919;">
+    Дедлайн
+    </div>
+    <div style="position: absolute; left: 534px; top: 359px;">
+        {% for task in tasks %}
+            <!-- <div class="rectangle" style="position: relative; width: 1190.01px; height: 60px; border-radius: 4px; background: rgba(255, 255, 255, 0.8);"></div> -->
+                <a href="{% url 'task_url' id=task.id proj_id=cur_project.id %}" style="color: #191919;">
+                <div style="height: 60px">
+                    <div style="position: relative; width: 412px; height: 60px; font-family: Gotham Pro; line-height: normal; font-size: 18px;">
+                        {{ task.title }}
+                    </div>
+                    <div style="position: relative; width: 140px; height: 60px; left: 875px; top: -70px; font-family: Gotham Pro; line-height: normal; font-size: 18px; color: #191919;">
+                        {{ task.deadline_date }}
+                    </div>
+                    <div style="position: relative; width: 140px; height: 60px; left: 629px; top: -130px; font-family: Gotham Pro; line-height: normal; font-size: 18px; color: #191919;">
+                        {{ task.status }}
+                    </div>
+                </div>
+                </a>
+            <div style="position: relative; width: 1190.01px; height: 0; top: -18px; border: 1px solid #D7D7D7;"></div>
+        {% endfor %}
+    </div>
+{% endblock %}

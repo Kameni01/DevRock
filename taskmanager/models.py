@@ -6,10 +6,10 @@ from mezzanine.models import Projects
 class Task(models.Model):
     TODO = 0
     IN_PROGRESS = 1
-    REVIEW = 2
-    DONE = 3
+    DONE = 2
+    REVIEW = 3
     STATUSES = ((TODO, 'To do',), (IN_PROGRESS, 'In progress',),
-                    (REVIEW, 'On review',), (DONE, 'Done',))
+                (DONE, 'Done',), (REVIEW, 'On review',) )
 
     title = models.CharField(max_length=160, db_index=True)
     body = models.TextField(blank=True)
@@ -17,7 +17,7 @@ class Task(models.Model):
     project = models.ForeignKey(Projects, null=True, on_delete=models.CASCADE)
 
     creation_date = models.DateTimeField(auto_now_add=True)
-    deadline_date = models.DateTimeField(auto_now_add=True)
+    deadline_date = models.DateTimeField(null=True)
 
     author = models.ForeignKey(User, verbose_name='Автор', related_name="Task_author", on_delete=models.SET_NULL, null=True)
     reviewer = models.ForeignKey(User, verbose_name='Проверяющий', related_name="Task_reviewer", on_delete=models.SET_NULL, null=True)

@@ -3,8 +3,8 @@
 
 {% block title %}MEZZANINE{% endblock title %}
 {% block default %}
-  <div class="container-fluid text-center">
-    <h1 class="">Create new project</h1>
-    <a href="{% url 'createproject' %}"><button type="button" name="button" class="btn btn-info">ADD</button></a>
+  <div class="container-fluid text-center" style="position: absolute; width: 170px; height: 18px; left: 180px; top: 47px;">
+    <div style=" font-family: Gotham Pro; line-height: normal; font-size: 18px; color: #191919;">Новый проект</div>
+    <a href="{% url 'createproject' %}"><button type="button" name="button" class="btn btn-primary">Создать</button></a>
   </div>
 {% endblock default %}

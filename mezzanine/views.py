@@ -10,6 +10,23 @@ from .forms import *
 from .utils import *
 
 
+class ShowProject(LoginRequiredMixin, View):
+    def get(self, request, id):
+        cur_project = Projects.objects.get(id=id)
+        projects = Projects.objects.all()
+
+        return render(request, 'mezzanine/about_project.html', context={"cur_project": cur_project, 'projects': projects})
+
+
+class ShowDocuments(LoginRequiredMixin, View):
+    def get(self, request, id):
+        cur_project = Projects.objects.get(id=id)
+        # documents = ProjectFiles.objects.filter(project=cur_project)
+        documents = ["Документ", "Заглушка", "Надо убрать"]
+        projects = Projects.objects.all()
+
+        return render(request, 'mezzanine/documents.html', context={"cur_project": cur_project, "documents": documents, 'projects' : projects})
+
 
 class TreeRender(LoginRequiredMixin, View):
     """Класс вывода древа проектов на стартовой странице"""
@@ -18,20 +35,16 @@ class TreeRender(LoginRequiredMixin, View):
         pages = ProjectPages.objects.all()
         sub_pages = ProjectPages.objects.all()
 
-        return render(request, 'mezzanine/default.html', {"projects": projects, "pages": pages, 'sub_page': sub_pages})
+        return render(request, 'mezzanine.html', {"projects": projects, "pages": pages, 'sub_page': sub_pages})
 
 
 
 class ProjectDetail(LoginRequiredMixin, View):
     """Класс вывода подробной информации по странице проекта"""
-    def get(self, request, slug):
-        projects = Projects.objects.all()
-        pages = ProjectPages.objects.all()
-        files = ProjectFiles.objects.all()
-        sub_pages = ProjectPages.objects.all()
-        project = get_object_or_404(Projects, slug=slug)
+    def get(self, request, id):
+        cur_project = get_object_or_404(Projects, id=id)
 
-        return render(request, 'mezzanine/detailproject.html', {"projects": projects, "pages": pages, 'files': files, 'detail': project, 'sub_page': sub_pages})
+        return render(request, 'mezzanine/project_settings.html', {'cur_project': cur_project})
 
 
 

@@ -1,0 +1,18 @@
+{% extends 'mezzanine/project.html' %}
+{% load staticfiles %}
+
+{% block context %}
+    <div style="position: absolute; width: 259px; height: 22px;left: 509px; top: 46px; font-family: Museo Sans Cyrl; line-height: normal; font-size: 18px; color: #737373;">
+    {{ cur_project.title }} / Настройки
+    </div>
+    <div style="position: absolute; width: 600px; left: 533px; top: 113px; font-family: Museo Sans Cyrl; line-height: normal; font-size: 24px;">
+    <h2 class="text-center">{{ cur_project.title }}</h2>
+    <p class="">Проект создал: {{ cur_project.user }}</p>
+    <p class="">Дата создания: {{ cur_project.created }}</p>
+    {% if request.user == detail.user %}
+      <a href="{{ cur_project.get_update_url }}" class="btn btn-primary btn-sm">ИЗМЕНИТЬ</a>
+      <a href="{{ cur_project.get_delete_url }}" class="btn btn-danger btn-sm">УДАЛИТЬ</a>
+    {% endif %}
+    <p class="">{{ cur_project.text|safe }}</p>
+    </div>
+{% endblock %}
