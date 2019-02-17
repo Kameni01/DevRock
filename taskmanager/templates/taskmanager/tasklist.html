@@ -1,12 +1,30 @@
 {% extends 'mezzanine.html' %}
-
+{% load staticfiles %}
 
 {% block content %}
+    <style>
+    .task-status {
+        width: 132px;
+        height: 40px;
+        border-radius: 4px;
+        text-align: center;
+        line-height: 40px;
+        font-family: Gotham Pro;
+        font-size: 16px;
+    }
+
+    .todo { background: #F5F5F5; }
+    .in-progress { background: #FFBCA1; }
+    .done { background: #D6F1C0; }
+    .review { background: #F4D97D; }
+    </style>
+<div style="position: fixed; width: 44px; height: 44px; left: 18px; top: 271px; border-radius: 50%; background: #FFFFFF;"></div>
+<img src="{% static 'mezzanine/icons/taskmanager_selected_icon.png' %}" style="position: fixed; left: 28px; top: 281px;">
 <div>
-    <div style="position: absolute; width: 211px; height: 27px; left: 120px; top: 125px; font-family: Gotham Pro; line-height: normal; font-size: 28px; color: #191919;">
+    <div style="position: fixed; width: 211px; height: 27px; left: 120px; top: 125px; font-family: Gotham Pro; line-height: normal; font-size: 28px; color: #191919;">
         Задачи
     </div>
-    <ul style="position: absolute; width: 191px; height: 18px; left: 120px; top: 195px; font-family: Gotham Pro; line-height: normal; font-size: 18px;">
+    <ul style="position: fixed; width: 191px; height: 18px; left: 120px; top: 195px; font-family: Gotham Pro; line-height: normal; font-size: 18px;">
         <li style="height: 50px;"><a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" style="color: #191919;">Мои задачи</a></li>
         <li><a href="#" style="color: red">Задачи команды</a></li>
     </ul>

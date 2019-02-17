@@ -11,8 +11,8 @@ urlpatterns = [
     path('project/create/', CreateProject.as_view(), name='createproject'),
     path('project/<int:id>/setting', ProjectDetail.as_view(), name='project_settings_url'),
     path('project/<int:id>/documents', ShowDocuments.as_view(), name='documents_url'),
-    path('project/<int:id>/documents/add/', AddProjectFile.as_view(), name='add_rojectfile'),
 
+    path('project/<int:id>/documents/add/', AddProjectFile.as_view(), name='add_rojectfile'),
     path('project/<int:pk>/delete', DeleteProjectFile.as_view(), name='delete_projectfile'),
     path('project/<str:slug>/', ProjectDetail.as_view(), name='projectdetail'),
     path('project/<str:slug>/update/', UpdateProject.as_view(), name='updateproject'),

@@ -9,14 +9,15 @@ from .models import *
 class TaskForm(ModelForm):
     class Meta:
         model = Task
-        fields = ['title', 'body', 'status', 'project', 'deadline_date']
+        fields = ['title', 'body', 'status', 'project', 'deadline_date', 'executors']
 
         labels = {
             'title': 'Название',
             'body': 'Описание',
             'status': 'Статус',
             'project': 'Проект',
-            'deadline_date': 'Дедлайн'
+            'deadline_date': 'Дедлайн',
+            'executors': 'Исполнители'
         }
 
         widgets = {
@@ -24,7 +25,8 @@ class TaskForm(ModelForm):
             'body': forms.Textarea(attrs={'class': 'form-control', 'rows': '6'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
             'project': forms.Select(attrs={'class': 'form-control'}),
-            'deadline_date': forms.DateTimeInput()
+            'deadline_date': forms.SelectDateWidget(attrs={'class': 'form-control'}),
+            'executors': forms.SelectMultiple(attrs={'class': 'form-control'})
         }
 
 

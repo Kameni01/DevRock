@@ -26,19 +26,44 @@
     <div style="position: absolute; left: 534px; top: 359px;">
         {% for task in tasks %}
             <!-- <div class="rectangle" style="position: relative; width: 1190.01px; height: 60px; border-radius: 4px; background: rgba(255, 255, 255, 0.8);"></div> -->
-                <a href="{% url 'task_url' id=task.id proj_id=cur_project.id %}" style="color: #191919;">
                 <div style="height: 60px">
+                <a href="{% url 'task_url' id=task.id proj_id=cur_project.id %}" style="color: #191919;">
                     <div style="position: relative; width: 412px; height: 60px; font-family: Gotham Pro; line-height: normal; font-size: 18px;">
                         {{ task.title }}
                     </div>
+                </a>
                     <div style="position: relative; width: 140px; height: 60px; left: 875px; top: -70px; font-family: Gotham Pro; line-height: normal; font-size: 18px; color: #191919;">
                         {{ task.deadline_date }}
                     </div>
-                    <div style="position: relative; width: 140px; height: 60px; left: 629px; top: -130px; font-family: Gotham Pro; line-height: normal; font-size: 18px; color: #191919;">
-                        {{ task.status }}
-                    </div>
+                        {% if task.status == task.TODO %}
+                            <div class='task-status todo dropdown' style="position: relative; left: 629px; top: -130px;">
+                                To Do
+                                <div class="dropdown-content" style="top: -17px">
+                                    {% include 'taskmanager/select_task_status.html' %}
+                                </div>
+                            </div>
+                        {% elif task.status == task.IN_PROGRESS %}
+                            <div class='task-status in-progress dropdown' style="position: relative; left: 629px; top: -130px;">
+                                InProgress
+                            <div class="dropdown-content" style="top: -17px">
+                                    {% include 'taskmanager/select_task_status.html' %}
+                                </div>
+                            </div>
+                        {% elif task.status == task.DONE %}
+                            <div class='task-status done dropdown' style="position: relative; left: 629px; top: -130px;">
+                                Done
+                            <div class="dropdown-content" style="top: -17px">
+                                    {% include 'taskmanager/select_task_status.html' %}
+                                </div>
+                            </div>
+                        {% elif task.status == task.REVIEW %}
+                            <div class='task-status review dropdown' style="position: relative; left: 629px; top: -130px;">
+                                Review
+                            <div class="dropdown-content" style="top: -17px">
+                                    {% include 'taskmanager/select_task_status.html' %}
+                                </div></div>
+                        {% endif %}
                 </div>
-                </a>
             <div style="position: relative; width: 1190.01px; height: 0; top: -18px; border: 1px solid #D7D7D7;"></div>
         {% endfor %}
     </div>

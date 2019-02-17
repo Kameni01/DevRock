@@ -21,6 +21,7 @@ class Task(models.Model):
 
     author = models.ForeignKey(User, verbose_name='Автор', related_name="Task_author", on_delete=models.SET_NULL, null=True)
     reviewer = models.ForeignKey(User, verbose_name='Проверяющий', related_name="Task_reviewer", on_delete=models.SET_NULL, null=True)
+    executors = models.ManyToManyField(User, verbose_name='Исполнители')
 
     def __str__(self):
         return self.title

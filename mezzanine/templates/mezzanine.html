@@ -27,16 +27,23 @@
 <body>
 <div class="container-fluid">
     <!--left panel-->
-    <div id="panel" style="position: absolute; width: 80px; height: 1080px;left: 0px; top: 0px; background: #000000"></div>
-    <a href="{% url 'Home_Page' %}"><div id="logo" style="position: absolute; width: 45px; height: 66px;left: 23px; top: 19px; font-family: Palanquin; font-style: normal; font-weight: bold; line-height: normal; font-size: 36px; color: #FFFFFF">dr</div></a>
+    <div id="panel" style="position: fixed; width: 80px; height: 1080px;left: 0px; top: 0px; background: #000000"></div>
+    <a href="{% url 'Home_Page' %}"><div id="logo" style="position: fixed; width: 45px; height: 66px;left: 23px; top: 19px; font-family: Palanquin; font-style: normal; font-weight: bold; line-height: normal; font-size: 36px; color: #FFFFFF">dr</div></a>
     {% if cur_project != None %}
-        <a href="{% url 'project_url' id=cur_project.id %}"><img src="{% static '/mezzanine/icons/home_icon.png' %}" id="home-icon" style="position: absolute; left: 1.46%; right: 97.26%; top: 12.98%; bottom: 84.66%;"></a>
-        <a href="{% url 'documents_url' id=cur_project.id %}"><img src="{% static '/mezzanine/icons/documents_icon.png' %}" id="home-icon" style="position: absolute; left: 1.51%; right: 97.38%; top: 21.17%; bottom: 75.99%;"></a>
-        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}"><img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}" id="taskmanager-icon" style="position: absolute; left: 1.46%; right: 97.29%; top: 29.04%; bottom: 68.12%;"></a>
+        <a href="{% url 'project_url' id=cur_project.id %}"><img src="{% static '/mezzanine/icons/home_icon.png' %}" id="home-icon" style="position: fixed; left: 28px; top: 121px;"></a>
+        <a href="{% url 'documents_url' id=cur_project.id %}"><img src="{% static '/mezzanine/icons/documents_icon.png' %}" id="home-icon" style="position: fixed; left: 28px; top: 201px;"></a>
+        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}"><img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}" id="taskmanager-icon" style="position: fixed; left: 28px; top: 281px;"></a>
     {% endif %}
-    <div id="side-panel" style="position: absolute; width: 384px; height: 940px;left: 80px; top: 0px; background: #F5F5F5"></div>
+    <div id="side-panel" style="position: fixed; width: 384px; height: 940px;left: 80px; top: 0px; background: #F5F5F5"></div>
+</div>
+<!--content-->
+<div style="position: absolute; left: 0; top: 0">
+    {% block content %}
+    {% endblock content %}
+</div>
+
     <!--ProjectTree panel-->
-    <div class="dropdown" style="position: absolute; width: 332px; height: 57px; left: 109px; top: 27px; border-radius: 4px;">
+    <div class="dropdown" style="position: fixed; width: 332px; height: 57px; left: 109px; top: 27px; border-radius: 4px;">
         <div >
             <div style="position: absolute; width: 40px; height: 40px; left: 11px; top: 9px; border-radius: 4px; background: rgba(255, 255, 255, 0.8);"></div>
             <div style="position: absolute; width: 24px; height: 24px; left: 303px; top: 17px;">
@@ -74,11 +81,5 @@
         </div>
         </div>
     </div>
-</div>
-<!--content-->
-<div style="position: absolute; left: 0; top: 0">
-    {% block content %}
-    {% endblock content %}
-</div>
 </body>
 </html>

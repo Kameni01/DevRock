@@ -1,7 +1,9 @@
 {% extends 'mezzanine.html' %}
 {% load staticfiles %}
 {% block content %}
-<div style="position: absolute; width: 181px; height: 18px; left: 180px; font-family: Gotham Pro; line-height: normal; font-size: 18px;">
+<div style="position: fixed; width: 44px; height: 44px; left: 18px; top: 111px; border-radius: 50%; background: #FFFFFF;"></div>
+<img src="{% static 'mezzanine/icons/home_selected_icon.png' %}" style="position: fixed; left: 28px; top: 121px;">
+<div style="position: fixed; width: 181px; height: 18px; left: 180px; font-family: Gotham Pro; line-height: normal; font-size: 18px;">
     <a href="{% url 'project_url' id=cur_project.id %}" style="color: #191919;">
         <div style="position: absolute; width: 24px; height: 24px; left: -52px; top: 121px;">
             <img src="{% static '/mezzanine/icons/about_project_icon.png' %}" style="position: absolute; left: 12.5%; right: 12.5%; top: 25%; bottom: 25%;">
