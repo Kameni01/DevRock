@@ -19,10 +19,11 @@ class ShowObjectMixin:
     def get(self, request, id):
         cur_project = Projects.objects.get(id=id)
         projects = Projects.objects.all()
-        if exac_doc == True:
+        if self.exac_doc == True:
             documents = ProjectPages.objects.filter(project_id=id)
-
-        return render(request, self.template, context={"cur_project": cur_project, "documents": documents, 'projects' : projects})
+            return render(request, self.template, context={"cur_project": cur_project, "documents": documents, 'projects' : projects})
+        else:
+            return render(request, self.template, context={"cur_project": cur_project, 'projects' : projects})
 
 
 
