@@ -11,7 +11,7 @@ from .utils import *
 
 
 
-class ShowProject(ShowObjectMixin, LoginRequiredMixin, View):
+class ShowProject(LoginRequiredMixin, ShowObjectMixin, View):
     raise_exception = True
     exac_doc = False
     template = 'mezzanine/about_project.html'
@@ -24,7 +24,7 @@ class ShowProject(ShowObjectMixin, LoginRequiredMixin, View):
 #
 #         return render(request, 'mezzanine/about_project.html', context={"cur_project": cur_project, 'projects': projects})
 
-class ShowDocuments(LoginRequiredMixin, View):
+class ShowDocuments(LoginRequiredMixin, ShowObjectMixin, View):
     raise_exception = True
     exac_doc = True
     template = 'mezzanine/documents.html'
