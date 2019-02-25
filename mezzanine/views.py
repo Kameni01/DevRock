@@ -10,22 +10,33 @@ from .forms import *
 from .utils import *
 
 
-class ShowProject(LoginRequiredMixin, View):
-    def get(self, request, id):
-        cur_project = Projects.objects.get(id=id)
-        projects = Projects.objects.all()
 
-        return render(request, 'mezzanine/about_project.html', context={"cur_project": cur_project, 'projects': projects})
+class ShowProject(ShowObjectMixin, LoginRequiredMixin, View):
+    raise_exception = True
+    exac_doc = False
+    template = 'mezzanine/about_project.html'
 
+
+# class ShowProject(LoginRequiredMixin, View):
+#     def get(self, request, id):
+#         cur_project = Projects.objects.get(id=id)
+#         projects = Projects.objects.all()
+#
+#         return render(request, 'mezzanine/about_project.html', context={"cur_project": cur_project, 'projects': projects})
 
 class ShowDocuments(LoginRequiredMixin, View):
-    def get(self, request, id):
-        cur_project = Projects.objects.get(id=id)
-        # documents = ProjectFiles.objects.filter(project=cur_project)
-        documents = ["Документ", "Заглушка", "Надо убрать"]
-        projects = Projects.objects.all()
+    raise_exception = True
+    exac_doc = True
+    template = 'mezzanine/documents.html'
 
-        return render(request, 'mezzanine/documents.html', context={"cur_project": cur_project, "documents": documents, 'projects' : projects})
+
+# class ShowDocuments(LoginRequiredMixin, View):
+#     def get(self, request, id):
+#         cur_project = Projects.objects.get(id=id)
+#         documents = ProjectPages.objects.filter(project_id=id)
+#         projects = Projects.objects.all()
+#
+#         return render(request, 'mezzanine/documents.html', context={"cur_project": cur_project, "documents": documents, 'projects' : projects})
 
 
 class TreeRender(LoginRequiredMixin, View):

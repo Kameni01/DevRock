@@ -31,6 +31,12 @@ ALLOWED_HOSTS = ['maksimvrs.ru', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard'
+
+
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
