@@ -13,6 +13,16 @@ from .models import *
 
 
 
+class ObjectDetailMixin:
+    model = None
+    template = None
+    def get(self, request, id):
+        obj = get_object_or_404(model, id=id)
+
+        return render(request, self.template, {self.model.__name__.lower(): obj})
+
+
+
 class ShowObjectMixin:
     template = None
     exac_doc = None

@@ -20,8 +20,10 @@ urlpatterns = [
     path('project/<str:slug>/page/create/', CreatePage.as_view(), name='createpage'),
     path('projectpage/<str:slug>/addfile/', AddPageFile.as_view(), name='add_pagefile'),
     path('projectpage/<int:pk>/delete/', DeletePageFile.as_view(), name='delete_pagefile'),
-    path('projectpage/<str:slug>/page/create/', CreatePageToPage.as_view(), name='pagetopage'),
-    path('projectpage/<str:slug>/', PageDetail.as_view(), name='pagedetail'),
+    # path('projectpage/<str:slug>/page/create/', CreatePageToPage.as_view(), name='pagetopage'),
+
+    path('projectpage/<str:slug>/', DocumentDetail.as_view(), name='pagedetail'),
+    
     path('projectpage/<str:slug>/update/', UpdatePage.as_view(), name='updatepage'),
     path('projectpage/<str:slug>/delete/', PageDelete.as_view(), name='deletepage'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -50,7 +50,14 @@ class TreeRender(LoginRequiredMixin, View):
 
 
 
-class ProjectDetail(LoginRequiredMixin, View):
+class ProjectDetail(LoginRequiredMixin, ObjectDetailMixin, View):
+    """Класс вывода подробной информации по странице проекта"""
+    model = Projects
+    template = 'mezzanine/project_settings.html'
+
+
+
+class DocumentDetail(LoginRequiredMixin, View):
     """Класс вывода подробной информации по странице проекта"""
     def get(self, request, id):
         cur_project = get_object_or_404(Projects, id=id)
@@ -59,16 +66,16 @@ class ProjectDetail(LoginRequiredMixin, View):
 
 
 
-class PageDetail(LoginRequiredMixin, View):
-    """Класс вывода подробной информации по странице проекта"""
-    def get(self, request, slug):
-        projects = Projects.objects.all()
-        pages = ProjectPages.objects.all()
-        files = PageFiles.objects.all()
-        sub_pages = ProjectPages.objects.all()
-        page = ProjectPages.objects.get(slug__iexact=slug)
-
-        return render(request, 'mezzanine/pagedetail.html', {"projects": projects, "pages": pages, 'files': files, 'detail': page, 'sub_page': sub_pages})
+# class PageDetail(LoginRequiredMixin, View):
+#     """Класс вывода подробной информации по странице проекта"""
+#     def get(self, request, slug):
+#         projects = Projects.objects.all()
+#         pages = ProjectPages.objects.all()
+#         files = PageFiles.objects.all()
+#         sub_pages = ProjectPages.objects.all()
+#         page = ProjectPages.objects.get(slug__iexact=slug)
+#
+#         return render(request, 'mezzanine/pagedetail.html', {"projects": projects, "pages": pages, 'files': files, 'detail': page, 'sub_page': sub_pages})
 
 
 
@@ -125,12 +132,12 @@ class CreatePage(LoginRequiredMixin, InheritedObjectCreateMixin, View):
 
 
 
-class CreatePageToPage(LoginRequiredMixin, InheritedObjectCreateMixin, View):
-    """Класс для создания страниц"""
-    form_model = CreatePageForm
-    template = 'mezzanine/createpagetopage.html'
-    what = 'page'
-    raise_exception = True
+# class CreatePageToPage(LoginRequiredMixin, InheritedObjectCreateMixin, View):
+#     """Класс для создания страниц"""
+#     form_model = CreatePageForm
+#     template = 'mezzanine/createpagetopage.html'
+#     what = 'page'
+#     raise_exception = True
 
 
 
