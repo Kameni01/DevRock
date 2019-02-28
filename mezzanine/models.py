@@ -18,7 +18,7 @@ class Projects(models.Model):
     title = models.CharField(verbose_name='Заголовок', max_length=100)
     text = models.TextField(verbose_name='Текст', null=True, blank=True)
     created = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
-    slug = models.SlugField(verbose_name='slug', blank=True, max_length=150, unique=True)
+    # slug = models.SlugField(verbose_name='slug', blank=True, max_length=150, unique=True)
     ended = models.BooleanField(verbose_name='Готовность', blank=True, null=True)
 
     class Meta:
@@ -27,20 +27,20 @@ class Projects(models.Model):
         ordering = ["title"]
 
     def get_absolute_url(self):
-        return reverse('projectdetail', kwargs={'slug': self.slug})
+        return reverse('projectdetail', kwargs={'id': self.id})
 
     def get_update_url(self):
-        return reverse('updateproject', kwargs={'slug': self.slug})
+        return reverse('updateproject', kwargs={'id': self.id})
 
     def get_delete_url(self):
-        return reverse('deleteproject', kwargs={'slug': self.slug})
+        return reverse('deleteproject', kwargs={'id': self.id})
 
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = gen_slug(self.title)
-        if self.created:
-            pass
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.id:
+    #         self.slug = gen_slug(self.title)
+    #     if self.created:
+    #         pass
+    #     super().save(*args, **kwargs)
 
 
     def __str__(self):
@@ -60,7 +60,7 @@ class ProjectPages(models.Model):
     title = models.CharField(verbose_name='Заголовок', max_length=100)
     text = models.TextField(verbose_name='Текст', null=True, blank=True)
     created = models.DateTimeField("Дата создания", auto_now_add=True)
-    slug = models.SlugField(verbose_name='slug' , blank=True, max_length=150, unique=True)
+    # slug = models.SlugField(verbose_name='slug' , blank=True, max_length=150, unique=True)
     # level = models.IntegerField(verbose_name='Уровень наследования', null=True, blank=True)
 
     class Meta:
@@ -70,20 +70,20 @@ class ProjectPages(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('pagedetail', kwargs={'slug': self.slug})
+        return reverse('pagedetail', kwargs={'id': self.id})
 
     def get_update_url(self):
-        return reverse('updatepage', kwargs={'slug': self.slug})
+        return reverse('updatepage', kwargs={'id': self.id})
 
     def get_delete_url(self):
-        return reverse('deletepage', kwargs={'slug': self.slug})
+        return reverse('deletepage', kwargs={'id': self.id})
 
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = gen_slug(self.title)
-        if self.created:
-            pass
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.id:
+    #         self.slug = gen_slug(self.title)
+    #     if self.created:
+    #         pass
+    #     super().save(*args, **kwargs)
 
 
     def __str__(self):

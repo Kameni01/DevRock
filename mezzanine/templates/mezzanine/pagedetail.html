@@ -17,13 +17,13 @@
 {% block file %}
   <p class="text-center">ФАЙЛЫ</p>
   <div class="btn-group-vertical text-center">
-    <a href="{% url 'add_pagefile' slug=detail.slug %}" class="btn btn-success btn-sm">ПРИКРЕПИТЬ</a>
+    <a href="{% url 'add_pagefile' id=detail.id %}" class="btn btn-success btn-sm">ПРИКРЕПИТЬ</a>
   </div>
   <div class="btn-group-vertical">
     {% for file in files %}
         {% if file.page_id == detail.id %}
           <p class="text-primary text-center">{{ file.title }}</p>
-          <a href="{% url 'delete_pagefile' pk=file.id %}" class="btn btn-outline-danger btn-sm">УДАЛИТЬ</a>
+          <a href="{% url 'delete_pagefile' id=file.id %}" class="btn btn-outline-danger btn-sm">УДАЛИТЬ</a>
           <a download href="/media/{{ file.file }}" class="btn btn-outline-success btn-sm">СКАЧАТЬ</a>
         {% endif %}
     {% endfor %}

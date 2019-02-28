@@ -13,17 +13,19 @@ urlpatterns = [
     path('project/<int:id>/documents', ShowDocuments.as_view(), name='documents_url'),
 
     path('project/<int:id>/documents/add/', AddProjectFile.as_view(), name='add_rojectfile'),
-    path('project/<int:pk>/delete', DeleteProjectFile.as_view(), name='delete_projectfile'),
-    path('project/<str:slug>/', ProjectDetail.as_view(), name='projectdetail'),
-    path('project/<str:slug>/update/', UpdateProject.as_view(), name='updateproject'),
-    path('project/<str:slug>/delete/', ProjectDelete.as_view(), name='deleteproject'),
-    path('project/<str:slug>/page/create/', CreatePage.as_view(), name='createpage'),
-    path('projectpage/<str:slug>/addfile/', AddPageFile.as_view(), name='add_pagefile'),
-    path('projectpage/<int:pk>/delete/', DeletePageFile.as_view(), name='delete_pagefile'),
+    path('project/<int:id>/delete', DeleteProjectFile.as_view(), name='delete_projectfile'),
+    path('project/<int:id>/', ProjectDetail.as_view(), name='projectdetail'),
+    path('project/<int:id>/update/', UpdateProject.as_view(), name='updateproject'),
+    path('project/<int:id>/delete/', ProjectDelete.as_view(), name='deleteproject'),
+
+    path('project/<int:id>/page/create/', CreatePage.as_view(), name='createpage'),
+
+    path('projectpage/<int:id>/addfile/', AddPageFile.as_view(), name='add_pagefile'),
+    path('projectpage/<int:id>/delete/', DeletePageFile.as_view(), name='delete_pagefile'),
     # path('projectpage/<str:slug>/page/create/', CreatePageToPage.as_view(), name='pagetopage'),
 
-    path('projectpage/<str:slug>/', DocumentDetail.as_view(), name='pagedetail'),
-    
-    path('projectpage/<str:slug>/update/', UpdatePage.as_view(), name='updatepage'),
-    path('projectpage/<str:slug>/delete/', PageDelete.as_view(), name='deletepage'),
+    path('projectpage/<int:id>/', DocumentDetail.as_view(), name='pagedetail'),
+
+    path('projectpage/<int:id>/update/', UpdatePage.as_view(), name='updatepage'),
+    path('projectpage/<int:id>/delete/', PageDelete.as_view(), name='deletepage'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

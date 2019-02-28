@@ -2,7 +2,7 @@
 
 {% block title %}Новая страница{% endblock title %}
 {% block default %}
-  <form class="" action="{% url 'createpage' slug=obj.slug %}" enctype='multipart/form-data' method="post">
+  <form class="" action="{% url 'createpage' pk=obj.id %}" enctype='multipart/form-data' method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" name="button" class="btn btn-success">ГОТОВО</button>

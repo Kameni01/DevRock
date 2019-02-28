@@ -3,7 +3,7 @@
 
 {% block title %}Добавление файла{% endblock title %}
 {% block default %}
-  <form class="text-center" action="{% url 'add_rojectfile' slug=obj.slug %}" enctype='multipart/form-data' method="post">
+  <form class="text-center" action="{% url 'add_rojectfile' id=obj.id %}" enctype='multipart/form-data' method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" name="button" class="btn btn-success">ЗАГРУЗИТЬ</button>

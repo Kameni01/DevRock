@@ -11,7 +11,7 @@
           <a href="{{ project.get_delete_url }}" class="btn text-danger btn-sm">X</a>
           <a href="{{ project.get_update_url }}" class="btn text-primary btn-sm">C</a>
         {% endif %}
-      <a href="{% url 'createpage' slug=project.slug %}" class="btn text-success btn-sm">P</a>
+      <a href="{% url 'createpage' id=project.id %}" class="btn text-success btn-sm">P</a>
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@
               <a href="{{ page.get_delete_url }}" class="btn text-danger btn-sm">x</a>
               <a href="{{ page.get_update_url }}" class="btn text-primary btn-sm">с</a>
             {% endif %}
-            <a href="{% url 'pagetopage' slug=page.slug %}" class="btn text-success btn-sm">PtP</a>
+            <a href="{% url 'pagetopage' id=page.id %}" class="btn text-success btn-sm">PtP</a>
           </div>
         </div>
       </div>

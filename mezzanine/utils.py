@@ -68,39 +68,39 @@ class InheritedObjectCreateMixin:
     ключи других объектов автоматически"""
     form_model = None
     template = None
-    def get(self, request, slug):
+    def get(self, request, id):
         form = self.form_model()
         # projects, pages, sub_pages = Tree()
         if self.what == 'proj':
-            obj = Projects.objects.get(slug__iexact=slug)
+            obj = get_object_or_404(Projects, id=id)
         elif self.what == 'page':
-            obj = ProjectPages.objects.get(slug__iexact=slug)
+            obj = get_object_or_404(ProjectPages, id=id)
         elif self.what == 'proj_file':
-            obj = Projects.objects.get(slug__iexact=slug)
+            obj = get_object_or_404(ProjectFiles, id=id)
         elif self.what == 'page_file':
-            obj = ProjectPages.objects.get(slug__iexact=slug)
+            obj = get_object_or_404(PageFiles, id=id)
         else:
             obj = None
         # return render(request, self.template, context={'form': form, 'projects': projects, "pages": pages, 'obj': obj, 'sub_page': sub_pages})
         return render(request, self.template, context={'form': form, 'obj': obj})
 
-    def post(self, request, slug):
+    def post(self, request, id):
         form = self.form_model(request.POST, request.FILES)
         # projects, pages, sub_pages = Tree()
 
         if form.is_valid():
             if self.what == 'proj':
-                obj = Projects.objects.get(slug__iexact=slug)
+                obj = get_object_or_404(Projects, id=id)
                 form.instance.project_id = obj.id
             elif self.what == 'page':
-                obj = ProjectPages.objects.get(slug__iexact=slug)
+                obj = get_object_or_404(ProjectPages, id=id)
                 form.instance.project_id = obj.project_id
                 form.instance.parent_page = obj.id
             elif self.what == 'proj_file':
-                obj = Projects.objects.get(slug__iexact=slug)
+                obj = get_object_or_404(ProjectFiles, id=id)
                 form.instance.project_id = obj.id
             elif self.what == 'page_file':
-                obj = ProjectPages.objects.get(slug__iexact=slug)
+                obj = get_object_or_404(PageFiles, id=id)
                 form.instance.page_id = obj.id
             else:
                 obj = None
@@ -119,15 +119,15 @@ class ObjectUpdateMixin:
     form_model = None
     template = None
 
-    def get(self, request, slug):
-        obj = self.model.objects.get(slug__iexact=slug)
+    def get(self, request, id):
+        obj = self.model.objects.get(id__iexact=id)
         form = self.form_model(instance=obj)
         # projects, pages, sub_pages = Tree()
 
         return render(request, self.template, context={'form': form, self.model.__name__.lower(): obj})
 
-    def post(self, request, slug):
-        obj = self.model.objects.get(slug__iexact=slug)
+    def post(self, request, id):
+        obj = self.model.objects.get(id__iexact=id)
         form = self.form_model(request.POST, instance=obj)
         # projects, pages, sub_pages = Tree()
 
@@ -146,15 +146,15 @@ class ObjectDeleteMixin:
     template = None
     redirect_url = None
 
-    def get(self, request, slug):
-        obj = self.model.objects.get(slug__iexact=slug)
+    def get(self, request, id):
+        obj = self.model.objects.get(id__iexact=id)
         # projects, pages, sub_pages = Tree()
 
         # return render(request, self.template, context={self.model.__name__.lower(): obj, 'projects': projects, "pages": pages, 'sub_page': sub_pages})
         return render(request, self.template, context={self.model.__name__.lower(): obj})
 
-    def post(self, request, slug):
-        obj = self.model.objects.get(slug__iexact=slug)
+    def post(self, request, id):
+        obj = self.model.objects.get(id__iexact=id)
         obj.delete()
 
         return redirect(reverse(self.redirect_url))
@@ -167,15 +167,15 @@ class FileDeleteMixin:
     template = None
     redirect_url = None
 
-    def get(self, request, pk):
-        obj = self.model.objects.get(id=pk)
+    def get(self, request, id):
+        obj = self.model.objects.get(id=id)
         # projects, pages, sub_pages = Tree()
 
         # return render(request, self.template, context={self.model.__name__.lower(): obj, 'projects': projects, "pages": pages, 'sub_page': sub_pages})
         return render(request, self.template, context={self.model.__name__.lower(): obj})
 
-    def post(self, request, pk):
-        obj = self.model.objects.get(id=pk)
+    def post(self, request, id):
+        obj = self.model.objects.get(id=id)
         obj.delete()
 
         return redirect(reverse(self.redirect_url))
