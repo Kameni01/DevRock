@@ -21,7 +21,7 @@ a:hover {
 
 /*Block sleva*/
 .aside {
-	position: absolute;
+	position: fixed;
 	background-color: #000;
 	height: 100%;
 	width: 80px;
