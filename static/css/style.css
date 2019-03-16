@@ -22,17 +22,22 @@ a:hover {
 /*Block sleva*/
 .aside {
 	position: fixed;
+	display: flex;
 	background-color: #000;
 	height: 100%;
-	width: 80px;
-	left: 0px;
-	top: 0px;
+	max-width: 80px;
 }
-/*Main knopka*/
-.home_page {
-	position: absolute;
-	top: 19px;
-	padding: 0 0 0 23px;  
+.aside .row {
+	margin: 0 !important;
+}
+.aside .col-12 {
+	padding: 0 !important;
+	flex: none;
+	
+}
+							/*Main knopka*/
+.main {	
+	margin: 19px 0 0 23px !important; 
 	font-family: Palanquin;
 	font-style: normal;
 	font-weight: bold;
@@ -43,46 +48,19 @@ a:hover {
 	background-color: transparent;
 }
 							/* 4 knopki sverxu */
-.project_buttons_up {
-	position: absolute;
-	top: 111px;
+.home {	
+	margin: -30px 0 0 28px;
 }
-.project_buttons_up a {
-	display: block;
+.documents {
+	margin: -30px 0 0 28px;
 }
-.ico img {
-	
-}
-.home_icon {
-	position: relative;
-	margin-left: 18px;
-	width: 44px;
-	height: 44px;
-	border-radius: 22px;
-	background-color: #fff;
-}
-.home_icon img {	
-	position: absolute;
-	left:10px;	
-	top:11px;	
-}
-.document {
-	margin:44px 0 0 29px;
-}
-.task {
-	margin: 47px 0 0 28px;
+.tasks {
+	margin: -30px 0 0 28px;
 }
 .calendar {
-	margin: 53px 0 0 28px;
+	margin: -30px 0 0 28px;
 }
 							/* 3 knopki snizu */
-.project_buttons_down {
-	position: absolute;
-	bottom: 0;
-}
-.project_buttons_down a {
-	display: block;
-}
 .counter {
 	margin: 0 0 -2px 45px;	
 	min-width: 18px;
@@ -102,13 +80,13 @@ a:hover {
 	line-height: normal;
 }
 .notification {
-	margin: 0 0 38px 30px;
+	margin: 0 0 -20px 30px;
 }
 .search {
-	margin: 0 0 43px 29px;
+	margin: 0 0 0 29px;
 }
 .profile {
-	width: 48px;
+	width: 48px !important;
 	height: 48px;
 	border-radius: 24px;	
 	margin: 0 0 32px 16px;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+<!--{% load staticfiles %}-->
 <html lang="ru" dir="ltr">
 <head>
     <meta charset="utf-8">
@@ -26,56 +26,46 @@
     .dropdown:hover {background: #CEDEEE}
 	</style>
 </head>
-<body>
-<div class="container-fluid">
-    <!--left panel-->
-    <section class="aside">   
-	    <a href="{% url 'Home_Page' %}" class="home_page">
-	    	dr
-	    	</a>    
-    {% if cur_project != None %}
-    	<!-- 4 knopki sverxu -->
-	    	<div class="project_buttons_up">
-	        <a href="{% url 'project_url' id=cur_project.id %}" class="float-left home_icon">
+<body>    
+    <section class="aside">              	
+	    	<div class="row">
+	    	<a href="{% url 'Home_Page' %}" class="col-12 main align-self-start">
+	    		dr
+	    		</a>
+	    	<!-- 4 knopki sverxu --> 
+	    	<!-- {% if cur_project != None %} -->
+	        <a href="{% url 'project_url' id=cur_project.id %}" class="col-12 home align-self-start">
 	        	<img src="{% static '/mezzanine/icons/home_icon.png' %}">
-	            </a>
-	            <div class="clearfix"></div>
-	        <a href="{% url 'documents_url' id=cur_project.id %}" class="float-left document ico">
+	            </a>	            
+	        <a href="{% url 'documents_url' id=cur_project.id %}" class="col-12 documents align-self-start">
 	        	<img src="{% static '/mezzanine/icons/documents_icon.png' %}">
-	            </a>
-	            <div class="clearfix"></div>
-	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left task ico">
+	            </a>	            
+	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="col-12 tasks align-self-start">
 	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
-	        	</a>
-	        	<div class="clearfix"></div>
-	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left calendar ico">
+	        	</a>	        	
+	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="col-12 tasks align-self-start">
 	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
-	        	</a>
-	        	<div class="clearfix"></div>
-	        </div>
-	    <!-- 3 knopki snizu -->    
-	        <div class="project_buttons_down">
-	        <div class=" float-left counter"><h6>9999</h6></div><div class="clearfix"></div>
-	        <a href="{% url 'documents_url' id=cur_project.id %}" class="float-left notification ico">
+	        	</a>        
+	    	<!-- 3 knopki snizu -->        
+	        <a href="{% url 'project_url' id=cur_project.id %}" class="col-12 notification align-self-end">
+	        	<img src="{% static '/mezzanine/icons/home_icon.png' %}">
+	            </a>	            
+	        <a href="{% url 'documents_url' id=cur_project.id %}" class="col-12 search align-self-end">
 	        	<img src="{% static '/mezzanine/icons/documents_icon.png' %}">
-	            </a>
-	            <div class="clearfix"></div>
-	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left search ico">
-	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
+	            </a>	            
+	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="col-12 profile align-self-end" style="background:url(),#828282;">   	
 	        	</a>
-	        	<div class="clearfix"></div>
-	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left profile" style="background: url(),#828282;">
-	        	</a>
-	        	<div class="clearfix"></div>
-	        </div>
-    {% endif %}
+	        <!--{% endif %}-->
+	        </div>    		
     </section>     
-    <div id="side-panel" style="position: fixed; width: 384px; height: 940px;left: 80px; top: 0px; background: #F5F5F5"></div>
+    <section class="panel">
+    	
+    </section>
 </div>
 <!--content-->
 <div style="position: absolute; left: 0; top: 0">
-    {% block content %}
-    {% endblock content %}
+   <!-- {% block content %}
+    	{% endblock content %}-->
 </div>
 
     <!--ProjectTree panel-->
