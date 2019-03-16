@@ -2,3 +2,4 @@ img obyzatelno propisivat'?
 4e za xep' v body/head?
 4e s block content?
 // 4e s color iconok? !!!! -> PESHENO
+ 4E S side panel delat' to
