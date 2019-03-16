@@ -83,3 +83,34 @@ a:hover {
 .project_buttons_down a {
 	display: block;
 }
+.counter {
+	margin: 0 0 -2px 45px;	
+	min-width: 18px;
+	height: 18px;
+	border-radius: 9px;
+	background-color: #fff;
+}
+.counter h6 {
+	text-align: center;
+	min-width: 11px;	
+	height: 10px;
+	margin: 5px 0 0 0px;
+	font-family: Gotham Pro;
+	font-size: 10px;
+	font-weight:bold; 
+	color: #191919;
+	line-height: normal;
+}
+.notification {
+	margin: 0 0 38px 30px;
+}
+.search {
+	margin: 0 0 43px 29px;
+}
+.profile {
+	width: 48px;
+	height: 48px;
+	border-radius: 24px;
+	background: url(),#828282;
+	margin: 0 0 32px 16px;
+}

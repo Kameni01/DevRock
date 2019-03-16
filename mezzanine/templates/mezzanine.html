@@ -41,16 +41,16 @@
 	        </div>
 	    <!-- 3 knopki snizu -->    
 	        <div class="project_buttons_down">
-	        <a href="{% url 'documents_url' id=cur_project.id %}" class="float-left document ico">
+	        <!--{% 4to-to %} --><div class=" float-left counter"><h6>9999</h6></div><div class="clearfix"></div><!--{% 4to-to %} -->
+	        <a href="{% url 'documents_url' id=cur_project.id %}" class="float-left notification ico">
 	        	<img src="{% static '/mezzanine/icons/documents_icon.png' %}">
 	            </a>
 	            <div class="clearfix"></div>
-	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left task ico">
+	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left search ico">
 	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
 	        	</a>
 	        	<div class="clearfix"></div>
-	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left calendar ico">
-	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
+	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left profile">
 	        	</a>
 	        	<div class="clearfix"></div>
 	        </div>
