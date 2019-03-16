@@ -10,6 +10,21 @@
     <link href="https://fonts.googleapis.com/css?family=Palanquin:400,700" rel="stylesheet">
     <link href="{% static 'css/font/GothamPro.ttf' %}">
     <title>{% block title %}{% endblock title %}</title>
+    <style>
+    .dropdown {
+        display: inline-block;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        background-color: white;
+    }
+
+    .dropdown:active .dropdown-content {display: block}
+    .dropdown-content:hover {display: block}
+    .dropdown:hover {background: #CEDEEE}
+	</style>
 </head>
 <body>
 <div class="container-fluid">
