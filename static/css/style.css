@@ -6,3 +6,80 @@
     font-family: "Museo Sans Cyrl";
     src: url("../css/font/MuseoSansCyrl.otf")
 }
+/*
+	MY styles
+*/
+a {
+	text-decoration: none;
+	color: #fff !important;
+}
+a:hover {
+	text-decoration: none !important;
+	color: #fff !important;
+}
+
+
+/*Block sleva*/
+.aside {
+	position: absolute;
+	background-color: #000;
+	height: 100%;
+	width: 80px;
+	left: 0px;
+	top: 0px;
+}
+/*Main knopka*/
+.home_page {
+	position: absolute;
+	top: 19px;
+	padding: 0 0 0 23px;  
+	font-family: Palanquin;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 36px;
+	line-height: normal;
+	color: #FFF;
+	display: block;
+	background-color: transparent;
+}
+							/* 4 knopki sverxu */
+.project_buttons_up {
+	position: absolute;
+	top: 111px;
+}
+.project_buttons_up a {
+	display: block;
+}
+.ico img {
+	background: #9E9E9E;
+}
+.home_icon {
+	position: relative;
+	margin-left: 18px;
+	width: 44px;
+	height: 44px;
+	border-radius: 22px;
+	background-color: #fff;
+}
+.home_icon img {	
+	position: absolute;
+	left:10px;	
+	top:11px;	
+}
+.document {
+	margin:44px 0 0 29px;
+}
+.task {
+	margin: 47px 0 0 28px;
+}
+.calendar {
+	margin: 53px 0 0 28px;
+}
+							/* 3 knopki snizu */
+.project_buttons_down {
+	position: absolute;
+	bottom: 0;
+}
+.project_buttons_down a {
+	display: block;
+}

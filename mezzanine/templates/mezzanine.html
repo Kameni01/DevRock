@@ -5,35 +5,57 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Palanquin:400,700" rel="stylesheet">
     <link href="{% static 'css/font/GothamPro.ttf' %}">
     <title>{% block title %}{% endblock title %}</title>
 </head>
-<style>
-    .dropdown {
-        display: inline-block;
-    }
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        z-index: 1;
-        background-color: white;
-    }
 
-    .dropdown:active .dropdown-content {display: block}
-    .dropdown-content:hover {display: block}
-    .dropdown:hover {background: #CEDEEE}
-</style>
 <body>
 <div class="container-fluid">
     <!--left panel-->
-    <div id="panel" style="position: fixed; width: 80px; height: 1080px;left: 0px; top: 0px; background: #000000"></div>
-    <a href="{% url 'Home_Page' %}"><div id="logo" style="position: fixed; width: 45px; height: 66px;left: 23px; top: 19px; font-family: Palanquin; font-style: normal; font-weight: bold; line-height: normal; font-size: 36px; color: #FFFFFF">dr</div></a>
+    <section class="aside">   
+	    <a href="{% url 'Home_Page' %}" class="home_page">
+	    	dr
+	    	</a>    
     {% if cur_project != None %}
-        <a href="{% url 'project_url' id=cur_project.id %}"><img src="{% static '/mezzanine/icons/home_icon.png' %}" id="home-icon" style="position: fixed; left: 28px; top: 121px;"></a>
-        <a href="{% url 'documents_url' id=cur_project.id %}"><img src="{% static '/mezzanine/icons/documents_icon.png' %}" id="home-icon" style="position: fixed; left: 28px; top: 201px;"></a>
-        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}"><img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}" id="taskmanager-icon" style="position: fixed; left: 28px; top: 281px;"></a>
+    	<!-- 4 knopki sverxu -->
+	    	<div class="project_buttons_up">
+	        <a href="{% url 'project_url' id=cur_project.id %}" class="float-left home_icon">
+	        	<img src="{% static '/mezzanine/icons/home_icon.png' %}">
+	            </a>
+	            <div class="clearfix"></div>
+	        <a href="{% url 'documents_url' id=cur_project.id %}" class="float-left document ico">
+	        	<img src="{% static '/mezzanine/icons/documents_icon.png' %}">
+	            </a>
+	            <div class="clearfix"></div>
+	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left task ico">
+	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
+	        	</a>
+	        	<div class="clearfix"></div>
+	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left calendar ico">
+	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
+	        	</a>
+	        	<div class="clearfix"></div>
+	        </div>
+	    <!-- 3 knopki snizu -->    
+	        <div class="project_buttons_down">
+	        <a href="{% url 'documents_url' id=cur_project.id %}" class="float-left document ico">
+	        	<img src="{% static '/mezzanine/icons/documents_icon.png' %}">
+	            </a>
+	            <div class="clearfix"></div>
+	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left task ico">
+	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
+	        	</a>
+	        	<div class="clearfix"></div>
+	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left calendar ico">
+	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
+	        	</a>
+	        	<div class="clearfix"></div>
+	        </div>
     {% endif %}
+    </section>     
     <div id="side-panel" style="position: fixed; width: 384px; height: 940px;left: 80px; top: 0px; background: #F5F5F5"></div>
 </div>
 <!--content-->
