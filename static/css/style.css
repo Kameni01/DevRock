@@ -91,4 +91,44 @@ a:hover {
 	border-radius: 24px;	
 	margin: 0 0 32px 16px;
 }
-/**/
+/*SIDE-PANEL*/
+.panel {
+	width: 384px;
+	height: 100%;
+	position: fixed;
+	left: 80px;
+	background-color: #f5f5f5;
+}
+.select_project {
+	cursor: pointer;
+	margin: 27px 0 0 29px;
+	width: 332px;
+	height: 57px;
+	border-radius: 6px;
+}
+.select_project:hover {
+	background-color: #e7e7e7;
+}
+.select_project:active {
+	background-color: #cedeee;
+}
+.select_project article {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border-radius: 6px;
+	margin: 9px 20px 0 11px;
+}
+.select_project h3 {
+	float: left;
+	font-family: Gotham Pro;
+	font-size: 18px;
+	line-height: normal;
+	color: #191919;
+	margin-top: 20px;
+}
+.select_project img {
+	float: right;
+	margin: 26px 11px 0 0;
+	background-color: #737373;
+}
