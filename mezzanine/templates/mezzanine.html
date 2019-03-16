@@ -11,7 +11,6 @@
     <link href="{% static 'css/font/GothamPro.ttf' %}">
     <title>{% block title %}{% endblock title %}</title>
 </head>
-
 <body>
 <div class="container-fluid">
     <!--left panel-->
@@ -41,7 +40,7 @@
 	        </div>
 	    <!-- 3 knopki snizu -->    
 	        <div class="project_buttons_down">
-	        <!--{% 4to-to %} --><div class=" float-left counter"><h6>9999</h6></div><div class="clearfix"></div><!--{% 4to-to %} -->
+	        <div class=" float-left counter"><h6>9999</h6></div><div class="clearfix"></div>
 	        <a href="{% url 'documents_url' id=cur_project.id %}" class="float-left notification ico">
 	        	<img src="{% static '/mezzanine/icons/documents_icon.png' %}">
 	            </a>
@@ -50,7 +49,7 @@
 	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
 	        	</a>
 	        	<div class="clearfix"></div>
-	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left profile">
+	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="float-left profile" style="background: url({%%}),#828282;">
 	        	</a>
 	        	<div class="clearfix"></div>
 	        </div>

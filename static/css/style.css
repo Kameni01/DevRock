@@ -110,8 +110,7 @@ a:hover {
 .profile {
 	width: 48px;
 	height: 48px;
-	border-radius: 24px;
-	background: url(),#828282;
+	border-radius: 24px;	
 	margin: 0 0 32px 16px;
 }
 /**/
