@@ -18,8 +18,9 @@ class ObjectDetailMixin:
     template = None
     def get(self, request, id):
         obj = get_object_or_404(model, id=id)
+        projects = Projects.objects.all()
 
-        return render(request, self.template, {self.model.__name__.lower(): obj})
+        return render(request, self.template, {self.model.__name__.lower(): obj, "projects": projects})
 
 
 
@@ -33,7 +34,7 @@ class ShowObjectMixin:
             documents = ProjectPages.objects.filter(project_id=id)
             return render(request, self.template, context={"cur_project": cur_project, "documents": documents, 'projects' : projects})
         else:
-            return render(request, self.template, context={"cur_project": cur_project, 'projects' : projects})
+            return render(request, self.template, context={"cur_project": cur_project, "projects" : projects})
 
 
 
@@ -45,21 +46,21 @@ class NonInheritedObjectCreateMixin:
     def get(self, request):
         form = self.form_model()
         # projects, pages, sub_pages = Tree()
-
+        projects = Projects.objects.all()
         # return render(request, self.template, context={'form': form, 'projects': projects, "pages": pages, 'sub_page': sub_pages})
-        return render(request, self.template, context={'form': form})
+        return render(request, self.template, context={'form': form, "projects": projects})
 
     def post(self, request):
         form = self.form_model(request.POST, request.FILES)
         # projects, pages, sub_pages = Tree()
-
+        projects = Projects.objects.all()
         if form.is_valid():
             form.instance.user = self.request.user
             form.save()
             return redirect("mezzanine")
         else:
             # return render(request, self.template, context={'form': form, 'projects': projects, "pages": pages, 'sub_page': sub_pages})
-            return render(request, self.template, context={'form': form})
+            return render(request, self.template, context={'form': form, "projects": projects})
 
 
 
@@ -70,7 +71,8 @@ class InheritedObjectCreateMixin:
     template = None
     def get(self, request, id):
         form = self.form_model()
-        # projects, pages, sub_pages = Tree()
+        projects = Projects.objects.all()
+
         if self.what == 'proj':
             obj = get_object_or_404(Projects, id=id)
         elif self.what == 'page':
@@ -81,12 +83,12 @@ class InheritedObjectCreateMixin:
             obj = get_object_or_404(PageFiles, id=id)
         else:
             obj = None
-        # return render(request, self.template, context={'form': form, 'projects': projects, "pages": pages, 'obj': obj, 'sub_page': sub_pages})
-        return render(request, self.template, context={'form': form, 'obj': obj})
+
+        return render(request, self.template, context={'form': form, 'obj': obj, "projects": projects})
 
     def post(self, request, id):
         form = self.form_model(request.POST, request.FILES)
-        # projects, pages, sub_pages = Tree()
+
 
         if form.is_valid():
             if self.what == 'proj':
@@ -108,7 +110,7 @@ class InheritedObjectCreateMixin:
             form.save()
             return redirect("mezzanine")
         else:
-            # return render(request, self.template, context={'form': form, 'projects': projects, "pages": pages, 'obj': obj, 'sub_page': sub_pages})
+
             return render(request, self.template, context={'form': form, 'obj': obj})
 
 
@@ -122,21 +124,20 @@ class ObjectUpdateMixin:
     def get(self, request, id):
         obj = self.model.objects.get(id__iexact=id)
         form = self.form_model(instance=obj)
-        # projects, pages, sub_pages = Tree()
+        projects = Projects.objects.all()
 
-        return render(request, self.template, context={'form': form, self.model.__name__.lower(): obj})
+        return render(request, self.template, context={'form': form, self.model.__name__.lower(): obj, "projects": projects})
 
     def post(self, request, id):
         obj = self.model.objects.get(id__iexact=id)
         form = self.form_model(request.POST, instance=obj)
-        # projects, pages, sub_pages = Tree()
-
+        projects = Projects.objects.all()
 
         if form.is_valid():
             form.save()
             return redirect("mezzanine")
         else:
-            return render(request, self.template, context={'form': form, self.model.__name__.lower(): obj})
+            return render(request, self.template, context={'form': form, self.model.__name__.lower(): obj, "projects": projects})
 
 
 
@@ -148,10 +149,9 @@ class ObjectDeleteMixin:
 
     def get(self, request, id):
         obj = self.model.objects.get(id__iexact=id)
-        # projects, pages, sub_pages = Tree()
+        projects = Projects.objects.all()
 
-        # return render(request, self.template, context={self.model.__name__.lower(): obj, 'projects': projects, "pages": pages, 'sub_page': sub_pages})
-        return render(request, self.template, context={self.model.__name__.lower(): obj})
+        return render(request, self.template, context={self.model.__name__.lower(): obj, "projects": projects})
 
     def post(self, request, id):
         obj = self.model.objects.get(id__iexact=id)
@@ -169,10 +169,9 @@ class FileDeleteMixin:
 
     def get(self, request, id):
         obj = self.model.objects.get(id=id)
-        # projects, pages, sub_pages = Tree()
+        projects = Projects.objects.all()
 
-        # return render(request, self.template, context={self.model.__name__.lower(): obj, 'projects': projects, "pages": pages, 'sub_page': sub_pages})
-        return render(request, self.template, context={self.model.__name__.lower(): obj})
+        return render(request, self.template, context={self.model.__name__.lower(): obj, "projects": projects})
 
     def post(self, request, id):
         obj = self.model.objects.get(id=id)
