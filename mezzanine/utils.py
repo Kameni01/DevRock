@@ -1,15 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 
-# def Tree():
-#     """Функция для создания переменных хранящих данные
-#     для построения древа проектов(Была инкапсулированна
-#     для уменьшения объема кода)"""
-#     projects = Projects.objects.all()
-#     pages = ProjectPages.objects.all()
-#     sub_pages = ProjectPages.objects.all()
-#
-#     return projects, pages, sub_pages
 
 
 
@@ -45,21 +36,17 @@ class NonInheritedObjectCreateMixin:
     template = None
     def get(self, request):
         form = self.form_model()
-        # projects, pages, sub_pages = Tree()
         projects = Projects.objects.all()
-        # return render(request, self.template, context={'form': form, 'projects': projects, "pages": pages, 'sub_page': sub_pages})
         return render(request, self.template, context={'form': form, "projects": projects})
 
     def post(self, request):
         form = self.form_model(request.POST, request.FILES)
-        # projects, pages, sub_pages = Tree()
         projects = Projects.objects.all()
         if form.is_valid():
             form.instance.user = self.request.user
             form.save()
             return redirect("mezzanine")
         else:
-            # return render(request, self.template, context={'form': form, 'projects': projects, "pages": pages, 'sub_page': sub_pages})
             return render(request, self.template, context={'form': form, "projects": projects})
 
 
@@ -83,13 +70,10 @@ class InheritedObjectCreateMixin:
             obj = get_object_or_404(PageFiles, id=id)
         else:
             obj = None
-
         return render(request, self.template, context={'form': form, 'obj': obj, "projects": projects})
 
     def post(self, request, id):
         form = self.form_model(request.POST, request.FILES)
-
-
         if form.is_valid():
             if self.what == 'proj':
                 obj = get_object_or_404(Projects, id=id)
@@ -110,7 +94,6 @@ class InheritedObjectCreateMixin:
             form.save()
             return redirect("mezzanine")
         else:
-
             return render(request, self.template, context={'form': form, 'obj': obj})
 
 
