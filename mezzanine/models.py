@@ -6,9 +6,9 @@ from time import time
 from django.urls import reverse
 
 
-def gen_slug(s):
-    new_slug = slugify(s, allow_unicode=True)
-    return new_slug + '-' +str(int(time()))
+# def gen_slug(s):
+#     new_slug = slugify(s, allow_unicode=True)
+#     return new_slug + '-' +str(int(time()))
 
 
 class Projects(models.Model):

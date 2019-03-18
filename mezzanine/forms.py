@@ -19,14 +19,14 @@ class CreateProjectForm(ModelForm):
 
 
 
-    def clean_slug(self):
-        new_slug = self.cleaned_data['slug'].lower()
-
-        if new_slug == 'create':
-            raise ValidationError('Slug не может быть назван create!')
-        if Projects.objects.filter(slug__iexact=new_slug).count():
-            raise ValidationError('Slug должен быть уникальным. Slug с именем "{}" уже существует!'.format(new_slug))
-        return new_slug
+    # def clean_slug(self):
+    #     new_slug = self.cleaned_data['slug'].lower()
+    #
+    #     if new_slug == 'create':
+    #         raise ValidationError('Slug не может быть назван create!')
+    #     if Projects.objects.filter(slug__iexact=new_slug).count():
+    #         raise ValidationError('Slug должен быть уникальным. Slug с именем "{}" уже существует!'.format(new_slug))
+    #     return new_slug
 
 
 
