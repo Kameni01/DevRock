@@ -2,7 +2,7 @@
 
 
 {% block title %}Новый проект{% endblock title %}
-{% block default %}
+{% block content %}
   <form class="" action="{% url 'createproject' %}" enctype='multipart/form-data' method="post" style="position: absolute; width: 170px; height: 18px; left: 500px; top: 47px;">
     {% csrf_token %}
     <p class="">Главное изображение: {{ form.mainimg }}</p>
@@ -14,4 +14,4 @@
     <!-- {{ form.as_p }} -->
     <button type="submit" name="button" class="btn btn-success">ГОТОВО</button>
   </form>
-{% endblock default %}
+{% endblock content %}
