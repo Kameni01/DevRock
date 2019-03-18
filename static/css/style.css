@@ -49,7 +49,7 @@ a:hover {
 }
 							/* 4 knopki sverxu */
 .home {	
-	margin: -30px 0 0 28px;
+	margin: -30px 0 0 25px;
 }
 .documents {
 	margin: -30px 0 0 28px;
@@ -112,23 +112,49 @@ a:hover {
 .select_project:active {
 	background-color: #cedeee;
 }
-.select_project article {
+.select_project:active .all_projects {
+	display: block !important;
+}
+.all_projects:hover {
+	display: block;
+}
+.all_projects {
+	display: none;
+	margin: 13px 0 0 29px;
+	border: 1px solid #D7D7D7;
+	width: 332px;
+	box-sizing: border-box;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2); 	
+	border-radius: 6px;
+}
+.all_projects a {
+	display: block;
+	background-color: #e7e7e7;
+	width: 332px;
+	height: 57px;	
+}
+.all_projects a:first-child {
+	border-bottom:1px solid #d7d7d7;
+}
+/*inside select_profile*/
+.select_project img {
+	float: right;
+	margin: 26px 11px 0 0;
+	background-color: #737373;
+}
+/*inside project*/
+.ico_project {
 	float: left;
 	width: 40px;
 	height: 40px;
 	border-radius: 6px;
 	margin: 9px 20px 0 11px;
 }
-.select_project h3 {
+.title_project {
 	float: left;
 	font-family: Gotham Pro;
 	font-size: 18px;
 	line-height: normal;
 	color: #191919;
 	margin-top: 20px;
-}
-.select_project img {
-	float: right;
-	margin: 26px 11px 0 0;
-	background-color: #737373;
 }

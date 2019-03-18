@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../../static/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Palanquin:400,700" rel="stylesheet">
     <link href="{% static 'css/font/GothamPro.ttf' %}">
-    
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>    
@@ -45,17 +44,24 @@
 	        </div>    		
     </section>     
     <section class="panel">    	
-	    <article class="select_project" id="sel" onclick="changebg()">
-	    	<article style="background: url(), rgba(255, 255, 255, 0.8);"></article>
-	    	<h3>{{ cur_project.title }}</h3>
+	    <article class="select_project">
+	    	<article class="ico_project" style="background: url(), rgba(255, 255, 255, 0.8);"></article>
+	    	<h3 class="title_project">{{ cur_project.title }}</h3>
 	    	<img src="{% static 'mezzanine/icons/v_icon.png' %}">
 	    	</article>
-	    <script type="text/javascript">
-	    	function changebg() {
-	    		var sel = document.getElementById('sel');
-	    		sel.style.background = "#cedeee";
-	    	}
-	</script>
+	    <article class="all_projects">
+		<!--{% for project in projects %}
+        	{% if cur_project != project %}-->
+        	<a href="{% url 'project_url' id=project.id %}">
+        	<article class="ico_project" style="background: url(), #000;"></article>
+        	<h3 class="title_project">{{ project.title }}</h3>
+        	</a>
+        	<a href="{% url 'project_url' id=project.id %}">
+        	<article class="ico_project" style="background: url(), #000;"></article>
+        	<h3 class="title_project">{{ project.title }}</h3>
+        	</a>	
+	    	</article>	
+	    
     </section>
 </div>
 <!--content-->
