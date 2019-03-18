@@ -25,39 +25,39 @@
     .dropdown:hover {background: #CEDEEE}
 </style>
 </head>
-<body>    
-    <section class="aside">              	
+<body>
+    <section class="aside">
 	    	<div class="row">
 	    	<a href="{% url 'Home_Page' %}" class="col-12 main align-self-start">
 	    		dr
 	    		</a>
-	    	<!-- 4 knopki sverxu --> 
+	    	<!-- 4 knopki sverxu -->
 	    	<!-- {% if cur_project != None %} -->
 	        <a href="{% url 'project_url' id=cur_project.id %}" class="col-12 home align-self-start">
 	        	<img src="{% static '/mezzanine/icons/home_icon.png' %}">
-	            </a>	            
+	            </a>
 	        <a href="{% url 'documents_url' id=cur_project.id %}" class="col-12 documents align-self-start">
 	        	<img src="{% static '/mezzanine/icons/documents_icon.png' %}">
-	            </a>	            
+	            </a>
 	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="col-12 tasks align-self-start">
 	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
-	        	</a>	        	
-	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="col-12 tasks align-self-start">
+	        	</a>
+	        <a href="" class="col-12 tasks align-self-start">
 	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
-	        	</a>        
-	    	<!-- 3 knopki snizu -->        
-	        <a href="{% url 'project_url' id=cur_project.id %}" class="col-12 notification align-self-end">
+	        	</a>
+	    	<!-- 3 knopki snizu -->
+	        <a href="" class="col-12 notification align-self-end">
 	        	<img src="{% static '/mezzanine/icons/home_icon.png' %}">
-	            </a>	            
-	        <a href="{% url 'documents_url' id=cur_project.id %}" class="col-12 search align-self-end">
+	            </a>
+	        <a href="" class="col-12 search align-self-end">
 	        	<img src="{% static '/mezzanine/icons/documents_icon.png' %}">
-	            </a>	            
-	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="col-12 profile align-self-end" style="background:url(),#828282;">   	
+	            </a>
+	        <a href="" class="col-12 profile align-self-end" style="background:url(),#828282;">
 	        	</a>
 	        <!--{% endif %}-->
-	        </div>    		
-    </section>     
-    <section class="panel">    	
+	        </div>
+    </section>
+    <section class="panel">
 	    <div class="dropdown" style="position: fixed; width: 332px; height: 57px; left: 109px; top: 27px; border-radius: 4px;">
         <div >
             <div style="position: absolute; width: 40px; height: 40px; left: 11px; top: 9px; border-radius: 4px; background: rgba(255, 255, 255, 0.8);"></div>
@@ -95,15 +95,15 @@
             </div>
         </div>
         </div>
-    </div>	 	    	
+    </div>
     </section>
 </div>
 <!--content-->
-<div style="position: absolute; left: 0; top: 0">
+<div class=''>
    {% block content %}
-    	{% endblock content %}
+   {% endblock content %}
 </div>
 
-    
+
 </body>
 </html>

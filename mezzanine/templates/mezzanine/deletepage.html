@@ -1,11 +1,12 @@
 {% extends 'mezzanine.html' %}
 
 {% block title %}{{ projectpages.title }}{% endblock title %}
-{% block default %}
+
+{% block content %}
   <form class="text-center" action="{{ projectpages.get_delete_url }}" enctype='multipart/form-data' method="post">
     {% csrf_token %}
     <h3>Вы уверены что хотите удалить данную страницу?</h3>
     <a href="{{ projectpages.get_absolute_url }}" class="btn btn-danger">ОТМЕНА</a>
     <button type="submit" name="button" class="btn btn-success">УДАЛИТЬ</button>
   </form>
-{% endblock default %}
+{% endblock content %}

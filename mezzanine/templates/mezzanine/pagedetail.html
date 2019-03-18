@@ -1,8 +1,8 @@
 {% extends 'mezzanine.html' %}
-{% load staticfiles %}
 
 {% block title %}{{ detail.title }}{% endblock title %}
-{% block default %}
+
+{% block content %}
     <h2 class="text-center">{{ detail.title }}</h2>
     <p class="">Проект создал: {{ detail.user }}</p>
     <p class="">Дата создания: {{ detail.created }}</p>
@@ -11,7 +11,7 @@
       <a href="{{ detail.get_delete_url }}" class="btn btn-danger btn-sm">УДАЛИТЬ</a>
     {% endif %}
     <p class="">{{ detail.text|safe }}</p>
-{% endblock default %}
+{% endblock content %}
 
 
 {% block file %}

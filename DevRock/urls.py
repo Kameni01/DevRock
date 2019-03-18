@@ -22,6 +22,7 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('accounts/', include('allauth.urls')),
     path('', include('startdir.urls')),
+    path('profile/', include('user_profiles.urls')),
     path('mezzanine/', include('mezzanine.urls')),
     path('tasks/', include('taskmanager.urls'), name="taskmanager_url"),
 ]

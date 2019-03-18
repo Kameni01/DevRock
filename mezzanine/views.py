@@ -17,12 +17,6 @@ class ShowProject(LoginRequiredMixin, ShowObjectMixin, View):
     template = 'mezzanine/about_project.html'
 
 
-# class ShowProject(LoginRequiredMixin, View):
-#     def get(self, request, id):
-#         cur_project = Projects.objects.get(id=id)
-#         projects = Projects.objects.all()
-#
-#         return render(request, 'mezzanine/about_project.html', context={"cur_project": cur_project, 'projects': projects})
 
 class ShowDocuments(LoginRequiredMixin, ShowObjectMixin, View):
     raise_exception = True
@@ -30,13 +24,6 @@ class ShowDocuments(LoginRequiredMixin, ShowObjectMixin, View):
     template = 'mezzanine/documents.html'
 
 
-# class ShowDocuments(LoginRequiredMixin, View):
-#     def get(self, request, id):
-#         cur_project = Projects.objects.get(id=id)
-#         documents = ProjectPages.objects.filter(project_id=id)
-#         projects = Projects.objects.all()
-#
-#         return render(request, 'mezzanine/documents.html', context={"cur_project": cur_project, "documents": documents, 'projects' : projects})
 
 
 class TreeRender(LoginRequiredMixin, View):
@@ -46,7 +33,7 @@ class TreeRender(LoginRequiredMixin, View):
         pages = ProjectPages.objects.all()
         sub_pages = ProjectPages.objects.all()
 
-        return render(request, 'mezzanine.html', {"projects": projects, "pages": pages, 'sub_page': sub_pages})
+        return render(request, 'mezzanine/default.html', {"projects": projects, "pages": pages, 'sub_page': sub_pages})
 
 
 
@@ -59,23 +46,8 @@ class ProjectDetail(LoginRequiredMixin, ObjectDetailMixin, View):
 
 class DocumentDetail(LoginRequiredMixin, View):
     """Класс вывода подробной информации по странице проекта"""
-    def get(self, request, id):
-        cur_project = get_object_or_404(Projects, id=id)
-
-        return render(request, 'mezzanine/project_settings.html', {'cur_project': cur_project})
-
-
-
-# class PageDetail(LoginRequiredMixin, View):
-#     """Класс вывода подробной информации по странице проекта"""
-#     def get(self, request, slug):
-#         projects = Projects.objects.all()
-#         pages = ProjectPages.objects.all()
-#         files = PageFiles.objects.all()
-#         sub_pages = ProjectPages.objects.all()
-#         page = ProjectPages.objects.get(slug__iexact=slug)
-#
-#         return render(request, 'mezzanine/pagedetail.html', {"projects": projects, "pages": pages, 'files': files, 'detail': page, 'sub_page': sub_pages})
+    model = ProjectPages
+    template = 'mezzanine/project_settings.html'
 
 
 
@@ -129,15 +101,6 @@ class CreatePage(LoginRequiredMixin, InheritedObjectCreateMixin, View):
     template = 'mezzanine/createpage.html'
     what = 'proj'
     raise_exception = True
-
-
-
-# class CreatePageToPage(LoginRequiredMixin, InheritedObjectCreateMixin, View):
-#     """Класс для создания страниц"""
-#     form_model = CreatePageForm
-#     template = 'mezzanine/createpagetopage.html'
-#     what = 'page'
-#     raise_exception = True
 
 
 

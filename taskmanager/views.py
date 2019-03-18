@@ -7,7 +7,7 @@ from .forms import *
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-def render_my_tasks(request, proj_id):
+def render_my_tasks(self, request, proj_id):
     tasks = Task.objects.filter(author=request.user) \
             | Task.objects.filter(reviewer=request.user) | Task.objects.filter(executors__username__icontains=request.user)
     cur_project = Projects.objects.get(id=proj_id)
@@ -19,7 +19,7 @@ def render_my_tasks(request, proj_id):
 
 class ShowTasks(LoginRequiredMixin, View):
     def get(self, request, proj_id):
-        return render_my_tasks(request, proj_id)
+        return render_my_tasks(self, request, proj_id)
 
 
 class ShowTask(LoginRequiredMixin, View):

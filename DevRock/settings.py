@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'startdir',
     'mezzanine',
     'taskmanager',
+    'user_profiles',
 ]
 
 MIDDLEWARE = [

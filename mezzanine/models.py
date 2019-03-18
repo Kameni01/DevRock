@@ -60,7 +60,7 @@ class ProjectPages(models.Model):
     title = models.CharField(verbose_name='Заголовок', max_length=100)
     text = models.TextField(verbose_name='Текст', null=True, blank=True)
     created = models.DateTimeField("Дата создания", auto_now_add=True)
-    # slug = models.SlugField(verbose_name='slug' , blank=True, max_length=150, unique=True)
+    # slug = models.SlugField(verbose_name='slug' , blank=True, null=True, max_length=150, unique=True)
     # level = models.IntegerField(verbose_name='Уровень наследования', null=True, blank=True)
 
     class Meta:
