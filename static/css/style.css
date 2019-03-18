@@ -25,7 +25,7 @@ a:hover {
 	display: flex;
 	background-color: #000;
 	height: 100%;
-	max-width: 80px;
+	width: 80px;
 }
 .aside .row {
 	margin: 0 !important;
@@ -119,7 +119,7 @@ a:hover {
 	display: block;
 }
 .all_projects {
-	display: none;
+	display:block;
 	margin: 13px 0 0 29px;
 	border: 1px solid #D7D7D7;
 	width: 332px;

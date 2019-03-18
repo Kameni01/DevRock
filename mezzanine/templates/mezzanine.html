@@ -6,11 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
     <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="../../static/css/style.css">
-    <link rel="stylesheet" href="../../static/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Palanquin:400,700" rel="stylesheet">
     <link href="{% static 'css/font/GothamPro.ttf' %}">
     <title>{% block title %}{% endblock title %}</title>
+    <style>
+    .dropdown {
+        display: inline-block;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        background-color: white;
+    }
+
+    .dropdown:active .dropdown-content {display: block}
+    .dropdown-content:hover {display: block}
+    .dropdown:hover {background: #CEDEEE}
+</style>
 </head>
 <body>    
     <section class="aside">              	
@@ -45,29 +58,50 @@
 	        </div>    		
     </section>     
     <section class="panel">    	
-	    <article class="select_project">
-	    	<article class="ico_project" style="background: url(), rgba(255, 255, 255, 0.8);"></article>
-	    	<h3 class="title_project">{{ cur_project.title }}</h3>
-	    	<img src="{% static 'mezzanine/icons/v_icon.png' %}">
-	    	</article>
-	    <article class="all_projects">
-		<!--{% for project in projects %}
-        	{% if cur_project != project %}-->
-        	<a href="{% url 'project_url' id=project.id %}">
-        	<article class="ico_project" style="background: url(), #000;"></article>
-        	<h3 class="title_project">{{ project.title }}</h3>
-        	</a>
-        	<a href="{% url 'project_url' id=project.id %}">
-        	<article class="ico_project" style="background: url(), #000;"></article>
-        	<h3 class="title_project">{{ project.title }}</h3>
-        	</a>	
-	    	</article>	    
+	    <div class="dropdown" style="position: fixed; width: 332px; height: 57px; left: 109px; top: 27px; border-radius: 4px;">
+        <div >
+            <div style="position: absolute; width: 40px; height: 40px; left: 11px; top: 9px; border-radius: 4px; background: rgba(255, 255, 255, 0.8);"></div>
+            <div style="position: absolute; width: 24px; height: 24px; left: 303px; top: 17px;">
+                <img src="{% static 'mezzanine/icons/v_icon.png' %}" style="position: absolute; left: 26.74%; right: 26.7%; top: 37.49%; bottom: 35.07%;">
+            </div>
+            <div style="position: absolute; width: 170px; height: 18px; left: 71px; top: 20px; font-family: Gotham Pro; line-height: normal; font-size: 18px; color: #191919;">
+                {{ cur_project.title }}
+            </div>
+
+            <div class="dropdown-content" style="position: relative; top: 0px; background-color: rgba(0,0,0,0)">
+            <div style="position: absolute; width: 332px; height: 70px; top: -70px"></div>
+            <div style="position: relative; width: 332px; top: 70px; background: #FFFFFF; border: 1px solid #D7D7D7; box-sizing: border-box; box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2); border-radius: 6px;">
+                {% for project in projects %}
+                    {% if cur_project != project %}
+                    <a href="{% url 'project_url' id=project.id %}">
+                    <div style="position: relative; height: 78px; top: 18px;">
+                        <div class="rectangle" style="position: relative; width: 40px; height: 40px; left: 11px; border-radius: 4px; background: rgba(0, 0, 0, 0.8);"></div>
+                        <div style="position: relative; width: 170px; height: 18px; left: 71px; top: -28px; font-family: Gotham Pro; line-height: normal; font-size: 18px; color: #191919;">
+                            {{ project.title }}
+                        </div>
+                        <div style="position: relative;width: 331px; border: 1px solid #D7D7D7;"></div>
+                    </div>
+                    </a>
+                    {% endif %}
+                {% endfor %}
+                <a href="{% url 'createproject' %}">
+                <div style="position: relative; height: 65px;">
+                    <img src="{% static 'mezzanine/icons/plus_icon.png' %}" style="position: relative; left: 21px; top: 21px;">
+                    <div style="position: absolute; width: 208px; height: 18px; left: 71px; font-family: Gotham Pro; line-height: normal;font-size: 18px;color: #9E9E9E;">
+                        Создать новый проект
+                    </div>
+                </div>
+                </a>
+            </div>
+        </div>
+        </div>
+    </div>	 	    	
     </section>
 </div>
 <!--content-->
 <div style="position: absolute; left: 0; top: 0">
-   <!-- {% block content %}
-    	{% endblock content %}-->
+   {% block content %}
+    	{% endblock content %}
 </div>
 
     
