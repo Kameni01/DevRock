@@ -18,7 +18,7 @@
 	    		</a>
 	    	<!-- 4 knopki sverxu --> 
 	    	<!-- {% if cur_project != None %} -->
-	        <a href="{% url 'project_url' id=cur_project.id %}" class="col-12 home align-self-start">
+	        <a href="{% url 'project_url' id=cur_project.id %}" class="col-12 home white_bg align-self-start">
 	        	<img src="{% static '/mezzanine/icons/home_icon.png' %}">
 	            </a>	            
 	        <a href="{% url 'documents_url' id=cur_project.id %}" class="col-12 documents align-self-start">
@@ -33,6 +33,7 @@
 	    	<!-- 3 knopki snizu -->        
 	        <a href="{% url 'project_url' id=cur_project.id %}" class="col-12 notification align-self-end">
 	        	<img src="{% static '/mezzanine/icons/home_icon.png' %}">
+	        	<div class="counter"><h6>19</h6></div>
 	            </a>	            
 	        <a href="{% url 'documents_url' id=cur_project.id %}" class="col-12 search align-self-end">
 	        	<img src="{% static '/mezzanine/icons/documents_icon.png' %}">
