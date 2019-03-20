@@ -14,8 +14,8 @@ from django.urls import reverse
 class Projects(models.Model):
     """Класс проектов"""
     user = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
-    mainimg = models.ImageField(upload_to='mezzanine/MainImg', height_field=None, width_field=None, max_length=100, blank=True, null=True)
-    title = models.CharField(verbose_name='Заголовок', max_length=100)
+    mainimg = models.ImageField(upload_to='mezzanine/MainImg', height_field=None, width_field=None, max_length=256, blank=True, null=True)
+    title = models.CharField(verbose_name='Заголовок', max_length=100, db_index=True)
     text = models.TextField(verbose_name='Текст', null=True, blank=True)
     created = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
     slug = models.SlugField(verbose_name='slug', blank=True, null=True, max_length=150, unique=True)
