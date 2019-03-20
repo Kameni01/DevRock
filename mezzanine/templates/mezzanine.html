@@ -53,13 +53,13 @@
 				<article class="sub-menu">
 						<!--{% for project in projects %}
 						{% if cur_project != project %}-->
-						<a href="{% url 'project_url' id=project.id %}" class="menu-item">
+						<a href="{% url 'project_url' id=project.id %}">
 								<article class="ico_project" style="background: url(), #000;"></article>
 								<h3 class="title_project">{{ project.title }}</h3>
 								</a>        	
 						<!--{% endif %}
 						{% endfor %} -->
-						<a href="{% url 'createproject' %}"  class="menu-item new_project">						
+						<a href="{% url 'createproject' %}"  class="new_project">						
 								<img src="{% static 'mezzanine/icons/plus_icon.png' %}">			
 								<h3 class="title_project">Создать новый проект</h3>					
 								</a>

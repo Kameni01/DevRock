@@ -118,11 +118,11 @@ a:hover {
 							/*SELECT*/
 .menu-item {
 	z-index: 1000;
+	margin: 27px 0 0 29px;
 }
 .selector {
 	display: inline-block;
 	cursor: pointer;
-	margin: 27px 0 0 29px;
 	width: 332px;
 	height: 57px;
 	border-radius: 6px;
@@ -186,22 +186,22 @@ a:hover {
 	visibility: hidden;
 	display: none;
 	opacity: 0;
-	margin: 13px 0 0 29px;
+	margin: 13px 0 0 0;
 	border: 1px solid #D7D7D7;
 	width: 332px;
 	box-sizing: border-box;
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2); 	
 	border-radius: 6px;
 }
-.sub-menu .menu-item {
+.sub-menu a {
 	background-color: #e7e7e7;
 	width: 332px;
 	height: 57px;
 }
-.sub-menu .menu-item:first-child {
+.sub-menu a:first-child {
 	border-bottom:1px solid #d7d7d7;
 }
-.sub-menu .menu-item:nth-last-child(2) {
+.sub-menu a:nth-last-child(2) {
 	border-bottom:1px solid #d7d7d7;
 }
 .new_project {
