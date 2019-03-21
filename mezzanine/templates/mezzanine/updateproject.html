@@ -2,10 +2,10 @@
 
 {% block title %}Изменение{% endblock title %}
 
-{% block content %}
+{% block project %}
   <form class="" action="{{ projects.get_update_url }}" enctype='multipart/form-data' method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" name="button" class="btn btn-success">ИЗМЕНИТЬ</button>
   </form>
-{% endblock content %}
+{% endblock project %}

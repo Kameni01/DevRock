@@ -19,6 +19,7 @@ a:hover {
 
 /*Block sleva*/
 .aside {
+	z-index: 1000;
 	position: fixed;
 	display: flex;
 	background-color: #000;
@@ -62,16 +63,16 @@ a:hover {
 }
 							/* white BG */
 .home {	
-	margin: -30px 0 0 25px;
+	margin: -45px 0 0 25px;
 }
 .documents {
-	margin: -30px 0 0 28px;
+	margin: -45px 0 0 28px;
 }
 .tasks {
-	margin: -30px 0 0 28px;
+	margin: -45px 0 0 28px;
 }
 .calendar {
-	margin: -30px 0 0 28px;
+	margin: -45px 0 0 28px;
 }
 							/* 3 knopki snizu */
 .counter {
@@ -109,6 +110,7 @@ a:hover {
 }
 							/*SIDE-PANEL*/
 .panel {
+	z-index: 100;
 	width: 384px;
 	height: 100%;
 	position: fixed;
@@ -118,7 +120,9 @@ a:hover {
 							/*SELECT*/
 .menu-item {
 	z-index: 1000;
-	margin: 27px 0 0 29px;
+	position: absolute;
+	top: 27px;
+	left: 29px;
 }
 .selector {
 	display: inline-block;
@@ -197,12 +201,13 @@ a:hover {
 	background-color: #e7e7e7;
 	width: 332px;
 	height: 57px;
-}
-.sub-menu a:first-child {
 	border-bottom:1px solid #d7d7d7;
 }
-.sub-menu a:nth-last-child(2) {
-	border-bottom:1px solid #d7d7d7;
+.sub-menu a:nth-last-child(1) {
+	border-bottom:none;
+}
+.sub-menu a:hover {
+	background-color: #CEDEEE;
 }
 .new_project {
 	height: 65px !important;
@@ -219,4 +224,104 @@ a:hover {
 	line-height: normal;
 	color: #9E9E9E;
 	height: 18px;
+}
+							/*Describtion*/
+.describtion {
+	margin: 110px 0 0 29px;
+	width: 332px;
+}
+.describtion a {
+	display: block;
+	width: 332px;
+	height: 57px;
+	transition: 0.2s;
+	border-radius: 6px;
+	border-bottom:1px solid #E7E7E7;
+}
+.describtion a:hover {
+	background-color:#E7E7E7;
+}
+.describtion a:nth-last-child(1) {
+	border-bottom:none;
+}
+.describtion img {
+	float: left;
+	margin: 22px 0 0 21px;
+}
+.describtion h3 {
+	float: left;
+	margin: 22px 0 0 27px;
+	font-family: Gotham Pro;
+	font-size: 18px;
+	line-height: normal;
+	color: #191919;
+	height: 18px;
+}
+.describtion .title_project.active {
+	color: #1B5998;
+}
+							/*Content*/
+.project {
+	position: absolute;
+	left: 464px;
+}
+							/*About project*/
+.taxonomy_project {
+	margin: 46px 0 0 45px;
+	height: 22px;
+}
+.taxonomy_project h3 {
+	display: inline;
+	float: left;
+	font-family: Museo Sans Cyrl;
+	font-size: 18px;
+	line-height: normal;
+	color: #737373;
+}
+.taxonomy_project .taxonomy_title:after {
+	content: "/";
+	padding: 0 5px 0;
+	font-family: Museo Sans Cyrl;
+	font-size: 18px;
+	line-height: normal;
+	color: #737373;
+}
+							/*Content project*/
+.content_project {
+	margin: 45px 0 0 69px;
+}
+.content_project h1 {
+	font-family: Museo Sans Cyrl;
+	font-size: 36px;
+	line-height: normal;
+	color: #191919;
+}
+							/* Icons in corner */
+.project .project_icons {
+	position: absolute;
+	left: 1300px;
+	top: 52px;
+	width: 148px;
+}
+.project .project_icons	a {
+	width: 42px;
+	height: 42px;
+	text-align: center;	
+	transition: 0.2s;
+	border-radius: 21px;
+}
+.project .project_icons	a img {
+	margin-top: 5px;
+}
+.project .project_icons	a:hover {
+	background-color:#E7E7E7; 
+}						
+.project .edit_icon {
+	display: block;
+	float: left;		
+}
+.project .dotted_icon {
+	display: block;
+	float: left;
+	margin: 0 0 0 47px;
 }

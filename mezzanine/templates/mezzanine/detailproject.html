@@ -2,7 +2,7 @@
 
 {% block title %}{{ detail.title }}{% endblock title %}
 
-{% block content %}
+{% block project %}
 {% if detail.mainimg %}
     <img src="/media/{{ detail.mainimg }}" alt="" class="img-thumbnail">
 {% endif %}
@@ -14,7 +14,7 @@
       <a href="{{ detail.get_delete_url }}" class="btn btn-danger btn-sm">УДАЛИТЬ</a>
     {% endif %}
     <p class="">{{ detail.text|safe }}</p>
-{% endblock content %}
+{% endblock project %}
 
 {% block file %}
   <p class="text-center">Прикрепленные файлы</p>

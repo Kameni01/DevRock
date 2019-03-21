@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
     <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="../../static/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Palanquin:400,700" rel="stylesheet">
     <link href="{% static 'css/font/GothamPro.ttf' %}">
     <title>{% block title %}{% endblock title %}</title>
@@ -45,34 +46,31 @@
     </section>         	
 	<section class="panel">    	
 				<section class="menu-item">
-				<article class="selector">
-						<article class="ico_project" style="background: url(), rgba(255, 255, 255, 0.8);"></article>
-						<h3 class="title_project">{{ cur_project.title }}</h3>
-						<img src="{% static 'mezzanine/icons/v_icon.png' %}">
-				</article>
-				<article class="sub-menu">
-						<!--{% for project in projects %}
-						{% if cur_project != project %}-->
-						<a href="{% url 'project_url' id=project.id %}">
-								<article class="ico_project" style="background: url(), #000;"></article>
-								<h3 class="title_project">{{ project.title }}</h3>
-								</a>        	
-						<!--{% endif %}
-						{% endfor %} -->
-						<a href="{% url 'createproject' %}"  class="new_project">						
-								<img src="{% static 'mezzanine/icons/plus_icon.png' %}">			
-								<h3 class="title_project">Создать новый проект</h3>					
-								</a>
-				</article>
-				</section>
+					<article class="selector">
+							<article class="ico_project" style="background: url(), rgba(255, 255, 255, 0.8);"></article>
+							<h3 class="title_project">{{ cur_project.title }}</h3>
+							<img src="{% static 'mezzanine/icons/v_icon.png' %}">
+					</article>
+					<article class="sub-menu">
+							<!--{% for project in projects %}
+							{% if cur_project != project %}-->
+							<a href="{% url 'project_url' id=project.id %}">
+									<article class="ico_project" style="background: url(), #000;"></article>
+									<h3 class="title_project">{{ project.title }}</h3>
+									</a>        	
+							<!--{% endif %}
+							{% endfor %} -->
+							<a href="{% url 'createproject' %}"  class="new_project">		
+									<img src="{% static 'mezzanine/icons/plus_icon.png' %}">	
+									<h3 class="title_project">Создать новый проект</h3>			
+									</a>
+					</article>
+				</section>				
+				{% block panel %}
+    			{% endblock panel %}				
  	 	    	
     </section>
-<!--content-->
-<div style="position: absolute; left: 0; top: 0">
-   {% block content %}
-    	{% endblock content %}
-</div>
-
-    
+    {% block project %}
+    {% endblock project %}    
 </body>
 </html>

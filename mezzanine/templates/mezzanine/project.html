@@ -1,29 +1,21 @@
 {% extends 'mezzanine.html' %}
 {% load staticfiles %}
 
-{% block content %}
-<div style="position: fixed; width: 44px; height: 44px; left: 18px; top: 111px; border-radius: 50%; background: #FFFFFF;"></div>
-<img src="{% static 'mezzanine/icons/home_selected_icon.png' %}" style="position: fixed; left: 28px; top: 121px;">
-<div style="position: fixed; width: 181px; height: 18px; left: 180px; font-family: Gotham Pro; line-height: normal; font-size: 18px;">
-    <a href="{% url 'project_url' id=cur_project.id %}" style="color: #191919;">
-        <div style="position: absolute; width: 24px; height: 24px; left: -52px; top: 121px;">
-            <img src="{% static '/mezzanine/icons/about_project_icon.png' %}" style="position: absolute; left: 12.5%; right: 12.5%; top: 25%; bottom: 25%;">
-        </div>
-        <div style="position: absolute; top: 126px">О проекте</div>
-    </a>
-    <a href="#" style="color: red;">
-        <div style="position: absolute; width: 24px; height: 24px; left: -52px; top: 183px;">
-            <img src="{% static '/mezzanine/icons/team_icon.png' %}" style="position: absolute; left: 4.17%; right: 4.17%; top: 20.83%; bottom: 20.83%;">
-        </div>
-        <div style="position: absolute;top: 184px">Команда</div>
-    </a>
-    <a href="{% url 'project_settings_url' id=cur_project.id %}" style="color: #191919;">
-        <div style="position: absolute; width: 24px; height: 24px; left: -52px; top: 243px;">
-            <img src="{% static '/mezzanine/icons/settings_icon.png' %}" style="position: absolute; left: 9.46%; right: 9.48%; top: 8.33%; bottom: 8.33%;">
-        </div>
-        <div style="position: absolute;top: 246px; color: red;">Настройки проекта</div>
-    </a>
-</div>
-    {% block context %}
-    {% endblock %}
+{% block panel %}
+<section class="describtion">
+        <a href="{% url 'createproject' %}">       
+        <img src="{% static '/mezzanine/icons/about_project_icon.png' %}" class="active">    
+        <h3 class="title_project active">О проекте</h3>         
+        </a>
+        <a href="{% url 'createproject' %}">       
+        <img src="{% static '/mezzanine/icons/team_icon.png' %}">    
+        <h3 class="title_project">Команда</h3>         
+        </a>
+        <a href="{% url 'createproject' %}">       
+        <img src="{% static '/mezzanine/icons/settings_icon.png' %}">    
+        <h3 class="title_project">Настройки проекта</h3>         
+        </a>
+</section>    
+{% endblock %}
+{% block project %}
 {% endblock %}

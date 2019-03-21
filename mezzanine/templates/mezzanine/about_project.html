@@ -1,12 +1,17 @@
 {% extends 'mezzanine/project.html' %}
 {% load staticfiles %}
 
-{% block context %}
-    <div style="position: absolute; width: 259px; height: 22px;left: 509px; top: 46px; font-family: Museo Sans Cyrl; line-height: normal; font-size: 18px; color: #737373;">
-    {{ cur_project.title }} / О проекте
-    </div>
-    <div style="position: absolute; width: 178px; height: 44px; left: 533px; top: 113px; font-family: Museo Sans Cyrl; line-height: normal; font-size: 36px;">
-    {{ cur_project.text|safe }}
-    </div>
-    <a href="#"><img src="{% static 'mezzanine/icons/edit_icon.png' %}" style="position: absolute; left: 1772px; top: 52px;"></a>
+{% block project %}
+<section class="project">
+    <article class="taxonomy_project">
+    	<h3 class="taxonomy_title">{{ cur_project.title }}</h3><h3>О проекте</h3>
+    </article>
+    <article class="content_project">
+    	<h1>{{ cur_project.text|safe }}</h1>    
+    </article> 
+    <article class="project_icons">  
+    	<a href="#" class="edit_icon"><img src="{% static 'mezzanine/icons/edit_ico.png' %}"></a>
+    	<a href="#" class="dotted_icon"><img src="{% static 'mezzanine/icons/dotted_icon.png' %}"></a>	
+    </article>
+</section>
 {% endblock %}

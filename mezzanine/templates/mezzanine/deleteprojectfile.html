@@ -2,7 +2,7 @@
 
 {% block title %}Удаление файла{% endblock title %}
 
-{% block content %}
+{% block project %}
   <form class="text-center" action="{% url 'delete_projectfile' id=projectfiles.id %}" enctype='multipart/form-data' method="post">
     {% csrf_token %}
     <h3 class="text-center">Вы уверены что хотите удалить данный файл?</h3>
@@ -11,4 +11,4 @@
       <button type="submit" name="button" class="btn btn-success">УДАЛИТЬ</button>
     </div>
   </form>
-{% endblock content %}
+{% endblock project %}
