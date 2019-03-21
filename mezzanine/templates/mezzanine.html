@@ -1,50 +1,50 @@
 <!DOCTYPE html>
-<!--{% load staticfiles %}-->
+{% load staticfiles %}
 <html lang="ru" dir="ltr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
-    <link rel="stylesheet" href="{% static '/css/style.css' %}">
-    <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="../../static/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Palanquin:400,700" rel="stylesheet">
     <link href="{% static 'css/font/GothamPro.ttf' %}">
     <title>{% block title %}{% endblock title %}</title>
 </head>
-<body>    
-    <section class="aside">              	
+<body>
+    <section class="aside">
 	    	<div class="row">
 	    	<a href="{% url 'Home_Page' %}" class="col-12 main align-self-start">
 	    		dr
 	    		</a>
-	    	<!-- 4 knopki sverxu --> 
+	    	<!-- 4 knopki sverxu -->
 	    	<!-- {% if cur_project != None %} -->
 	        <a href="{% url 'project_url' id=cur_project.id %}" class="col-12 home white_bg align-self-start">
 	        	<img src="{% static '/mezzanine/icons/home_icon.png' %}">
-	            </a>	            
+	            </a>
 	        <a href="{% url 'documents_url' id=cur_project.id %}" class="col-12 documents align-self-start">
 	        	<img src="{% static '/mezzanine/icons/documents_icon.png' %}">
-	            </a>	            
+	            </a>
 	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="col-12 tasks align-self-start">
 	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
-	        	</a>	        	
+	        	</a>
 	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="col-12 tasks align-self-start">
 	        	<img src="{% static '/mezzanine/icons/taskmanager_icon.png' %}">
-	        	</a>        
-	    	<!-- 3 knopki snizu -->        
+	        	</a>
+	    	<!-- 3 knopki snizu -->
 	        <a href="{% url 'project_url' id=cur_project.id %}" class="col-12 notification align-self-end">
 	        	<img src="{% static '/mezzanine/icons/home_icon.png' %}">
 	        	<div class="counter"><h6>19</h6></div>
-	            </a>	            
+	            </a>
 	        <a href="{% url 'documents_url' id=cur_project.id %}" class="col-12 search align-self-end">
 	        	<img src="{% static '/mezzanine/icons/documents_icon.png' %}">
-	            </a>	            
-	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="col-12 profile align-self-end" style="background:url(),#828282;">   	
+	            </a>
+	        <a href="{% url 'taskmanager_url' proj_id=cur_project.id %}" class="col-12 profile align-self-end" style="background:url(),#828282;">
 	        	</a>
 	        <!--{% endif %}-->
-	        </div>    		
-    </section>         	
-	<section class="panel">    	
+	        </div>
+    </section>
+	<section class="panel">
 				<section class="menu-item">
 					<article class="selector">
 							<article class="ico_project" style="background: url(), rgba(255, 255, 255, 0.8);"></article>
@@ -57,20 +57,20 @@
 							<a href="{% url 'project_url' id=project.id %}">
 									<article class="ico_project" style="background: url(), #000;"></article>
 									<h3 class="title_project">{{ project.title }}</h3>
-									</a>        	
+									</a>
 							<!--{% endif %}
 							{% endfor %} -->
-							<a href="{% url 'createproject' %}"  class="new_project">		
-									<img src="{% static 'mezzanine/icons/plus_icon.png' %}">	
-									<h3 class="title_project">Создать новый проект</h3>			
+							<a href="{% url 'createproject' %}"  class="new_project">
+									<img src="{% static 'mezzanine/icons/plus_icon.png' %}">
+									<h3 class="title_project">Создать новый проект</h3>
 									</a>
 					</article>
-				</section>				
+				</section>
 				{% block panel %}
-    			{% endblock panel %}				
- 	 	    	
+    			{% endblock panel %}
+
     </section>
     {% block project %}
-    {% endblock project %}    
+    {% endblock project %}
 </body>
 </html>
