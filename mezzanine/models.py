@@ -46,9 +46,9 @@ class Projects(models.Model):
     def __str__(self):
         return self.title
 
-class DevComand(models.Model):
-    project = models.ForeignKey(Projects, verbose_name='Проект', on_delete=models.CASCADE)
-    developers = models.ManyToManyField(User, verbose_name='Разработчик')
+# class DevComand(models.Model):
+#     project = models.ForeignKey(Projects, verbose_name='Проект', on_delete=models.CASCADE)
+#     developers = models.ManyToManyField(User, verbose_name='Разработчик')
 
 
 

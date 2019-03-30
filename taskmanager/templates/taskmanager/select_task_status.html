@@ -1,6 +1,0 @@
-<div style="width: 483px; height: 69px; background: #FFFFFF; border: 1px solid #D7D7D7; box-sizing: border-box; box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2); border-radius: 6px;">
-    <a href="{% url 'task_change_status' id=task.id proj_id=cur_project.id status=task.TODO %}" style="color: #191919;"><div class="task-status todo" style="position: absolute; width: 100px; height: 30px; line-height: 30px; left: 18px; top: 19px;">To Do</div></a>
-    <a href="{% url 'task_change_status' id=task.id proj_id=cur_project.id status=task.IN_PROGRESS %}" style="color: #191919;"><div class="task-status in-progress" style="position: absolute; width: 100px; height: 30px; line-height: 30px; left: 134px; top: 19px;">InProgress</div></a>
-    <a href="{% url 'task_change_status' id=task.id proj_id=cur_project.id status=task.DONE %}" style="color: #191919;"><div class="task-status done" style="position: absolute; width: 100px; height: 30px; line-height: 30px; left: 250px; top: 19px;">Done</div></a>
-    <a href="{% url 'task_change_status' id=task.id proj_id=cur_project.id status=task.REVIEW %}" style="color: #191919;"><div class="task-status review" style="position: absolute; width: 100px; height: 30px; line-height: 30px; left: 366px; top: 19px;">Review</div></a>
-</div>
