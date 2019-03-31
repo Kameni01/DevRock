@@ -24,5 +24,4 @@ urlpatterns = [
     path('', include('startdir.urls')),
     path('profile/', include('user_profiles.urls')),
     path('mezzanine/', include('mezzanine.urls')),
-    path('tasks/', include('taskmanager.urls'), name="taskmanager_url"),
 ]

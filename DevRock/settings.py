@@ -50,8 +50,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'startdir',
     'mezzanine',
-    'taskmanager',
     'user_profiles',
+    'GitlabIntegration',
 ]
 
 MIDDLEWARE = [
